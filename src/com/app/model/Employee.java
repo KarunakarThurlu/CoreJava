@@ -23,13 +23,13 @@ public class Employee {
 	}
 	public static void main(String[] args) {
 		Employee e1=new Employee(12,"abs",123.123);
-		Employee e2=new Employee(12,"abs",123.123);
-		Employee e3=new Employee(12,"abs",123.123);
+		Employee e2=new Employee(12,"zbs",123.123);
+		Employee e3=new Employee(12,"cbs",123.123);
 		Set<Employee> s=new HashSet<>();
 		s.add(e3);
 		s.add(e1);
 		s.add(e2);
-        s.add(e3);//duplicate object
+        s.add(e3);//duplicate Object
 		System.out.println(s.size()+" "+s);
 	}
 }
