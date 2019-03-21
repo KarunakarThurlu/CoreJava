@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class MaxMin {
 	public static void main(String[] args) {
 		System.out.println("enter a number");
-		int max=Integer.MAX_VALUE,c=0,temp;
+		int max=Integer.MAX_VALUE,temp;
 		Scanner sc=new Scanner(System.in);
 		int n=sc.nextInt();
 		System.out.println("enter "+n+" numbers");
