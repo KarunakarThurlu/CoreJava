@@ -2,7 +2,7 @@ package com.app.string;
 
 public class CharCount {
 	public static void main(String[] args) {
-		String s="karunakar yadav thuelu";
+		String s="karunakar yadav thurlu";
 		for(char c='a';c<='z';c++)
 		{
 			int count=0;
