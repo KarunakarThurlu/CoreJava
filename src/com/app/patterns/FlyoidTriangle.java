@@ -37,13 +37,14 @@ public class FlyoidTriangle {
 		{
 			for(int k=7;k>=i;k--)
 			{
+				System.out.print(" ");
+			}
+			//System.out.println();
+			for(int j=1;j<=i;j++)
+			{
 				System.out.print("*");
 			}
 			System.out.println();
-			for(int j=1;j<=i;j++)
-			{
-				System.out.print(" ");
-			}
 
 		}
 /*output:-
