@@ -16,7 +16,6 @@ public class Employee {
 		this.ename = ename;
 		this.esal = esal;
 	}
-	
 	@Override
 	public String toString() {
 		return "Employee [eid=" + eid + ", ename=" + ename + ", esal=" + esal + "]";

@@ -1,9 +1,18 @@
 package com.app;
 
-public class Test {
+class Test {
+static	int a=465;
+static	int f=4;
 	public static void main(String[] args) {
-		System.out.println("hello world ......!");
-		System.out.println("hello Karunakar ......!");
+		m1();
+	
+
+
+	}
+	static void m1()
+	{
+
+		System.out.print(a+" "+f);
 	}
 
 }

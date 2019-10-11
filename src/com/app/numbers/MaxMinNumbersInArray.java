@@ -1,8 +1,13 @@
 package com.app.numbers;
 
+import java.util.Arrays;
+
 public class MaxMinNumbersInArray {
 	public static void main(String[] args) {
 		int a[]= {12,3,45,67,234,9};
+		
+		Arrays.stream(a).min().ifPresent(s->System.out.println(" min from labda  "+s));
+		Arrays.stream(a).max().ifPresent(s->System.out.println(" max from lambda "+s));
 		System.out.print("Before Sorting ");
 		for(int i=0;i<a.length;i++)
 		{

@@ -3,7 +3,7 @@ package com.app.numbers;
 public class LeapYear {
 	public static void main(String[] args) {
 
-		int n=2004;
+		int n=2020;
 		if(n%100==0)
 		{
 			if(n%400==0)

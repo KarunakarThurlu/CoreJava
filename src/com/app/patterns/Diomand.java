@@ -10,7 +10,7 @@ public class Diomand {
 			}
 			for(int k=1;k<=i;k++)
 			{
-				System.out.print(i+" ");
+				System.out.print("* ");
 			}
 			System.out.println();
 		}

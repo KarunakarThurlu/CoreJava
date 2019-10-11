@@ -1,7 +1,7 @@
 package com.app.overloading;
 
 public class Test {
-	public  static void show(float s)
+	public  static void show(Integer s)
 	{
 		System.out.println("string method");
 	}
@@ -14,6 +14,6 @@ public class Test {
     	 System.out.println("int method"); 
      }
 	public static void main(String[] args) {
-		show(12);
+		show("abc");
 	}
 }
