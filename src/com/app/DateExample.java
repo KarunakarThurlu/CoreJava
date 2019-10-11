@@ -6,6 +6,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Period;
+import java.time.Year;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 public class DateExample {
@@ -36,6 +39,18 @@ public class DateExample {
 			System.out.println("your password expires with in "+count.getDays()+" days");
 		}
 		
-	
+		Year year=Year.of(date.getYear());
+		if(year.isLeap()) {
+			System.out.println(date.getYear()+" is Leap year");
+		}
+		else {
+			System.out.println(date.getYear()+" is not leap year");
+		}
+		
+		ZoneId zone=ZoneId.systemDefault();
+		System.out.println(zone);
+		ZoneId la=ZoneId.of("America/Los_Angeles");
+		ZonedDateTime zt=ZonedDateTime.now(la);
+		System.out.println(zt);
 	}
 }
