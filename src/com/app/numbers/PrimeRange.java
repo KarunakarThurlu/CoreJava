@@ -1,5 +1,8 @@
 package com.app.numbers;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class PrimeRange {
 	public static void main(String[] args) {
 
@@ -18,10 +21,19 @@ public class PrimeRange {
 			if(c==0)
 			{
 				System.out.print(i+" ");
-				
+
 			}
 		}
-
+		System.out.println();
+		System.out.println("============");
+		//2nd way
+		IntStream.range(1,100)
+		.filter(number->IntStream.range(2,number)
+				.noneMatch(x->number%x==0))
+		.boxed()
+		.collect(Collectors.toList())
+		.forEach(x->System.out.print(x+" "));
+		;
 	}
 
 }
