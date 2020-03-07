@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -18,12 +19,13 @@ public class MapExample {
 		m.put("Loha", "US");
 		m.put("jessika","Canada");
 		
-		
+		Map<Entry<String, String>, Long> count=m.entrySet().stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+		System.out.println(count);
 		//see the power of lambdas and streams
 		
 		
 		//itarating map elements
-		m.entrySet().forEach(k->System.out.println(k.getKey()+" "+k.getValue()));
+		/*m.entrySet().forEach(k->System.out.println(k.getKey()+" "+k.getValue()));
 		//finding key starts with specific  char
 		m.entrySet().stream().filter(s->s.getKey().startsWith("k")).forEach(s->System.out.println(s));
 
@@ -48,7 +50,7 @@ public class MapExample {
 		System.out.println();
 		//removing duplicates in an array
 		Arrays.stream(a).distinct().forEach(s->System.out.print(s+" "));
-		
+		*/
 		
 		
 		
