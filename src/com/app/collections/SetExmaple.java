@@ -9,9 +9,10 @@ public class SetExmaple {
 		Set<String> s=new HashSet<>();
 		s.add("a");
 		s.add("a");
-		s.add("a");
+		s.add("b");
 		s.add("a");
 		System.out.println(s.size());
+		s.stream().forEach(l->System.out.println(l));
 	}
 	
 }

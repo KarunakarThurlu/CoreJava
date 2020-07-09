@@ -9,6 +9,6 @@ public class RemoveDuplicates {
 		Arrays.stream(a).forEach(s->System.out.print(s+" "));
 		System.out.println();
 		//removing duplicates in an array
-		Arrays.stream(a).distinct().forEach(s->System.out.print(s+" "));
+		Arrays.stream(a).distinct().forEach(System.out::println);
 	}
 }

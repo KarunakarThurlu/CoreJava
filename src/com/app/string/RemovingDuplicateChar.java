@@ -1,5 +1,7 @@
 package com.app.string;
 
+import java.util.HashMap;
+
 public class RemovingDuplicateChar {
 	public static void main(String[] args) {
 		String s="karuanakar";
@@ -15,5 +17,12 @@ public class RemovingDuplicateChar {
 			}
 		}
 		System.out.println(s2);
+		String ss="karunakar";
+		HashMap<Character, Integer> res=new HashMap<>();
+		for(int i=0;i<ss.length();i++) {
+			char c=ss.charAt(i);
+			ss=ss.replace(c,' ');
+		}
+		System.out.println(ss);
 	}
 }

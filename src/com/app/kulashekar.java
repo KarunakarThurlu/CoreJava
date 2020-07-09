@@ -1,11 +1,10 @@
 package com.app;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.stream.IntStream;
 
 public class kulashekar {
 	public static void main(String[] args) {
-		int a=10;
+		/*int a=10;
 		int c=a%2;
 		int d=a/2;
 
@@ -39,6 +38,11 @@ public class kulashekar {
 					str1=str1.replace(str1.charAt(i),'#');
 			}
 		}
-		System.out.println(str1);
+		System.out.println(str1);*/
+		IntStream.range(1,50).forEach(s->{
+               if(s%2==0)
+				System.out.print(s+" ");
+		});
+		System.out.println();
 	}
 }

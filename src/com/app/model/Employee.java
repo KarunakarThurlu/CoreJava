@@ -40,7 +40,7 @@ public class Employee {
 	public String toString() {
 		return "Employee [eid=" + eid + ", ename=" + ename + ", esal=" + esal + "]";
 	}
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Employee e1=new Employee(12,"abs",13.123);
 		Employee e2=new Employee(12,"zbs",123.123);
 		Employee e3=new Employee(12,"cbs",193.123);
@@ -57,5 +57,5 @@ public class Employee {
 				.orElseThrow(NoSuchElementException::new);
 		System.out.println(max);
 		
-	}
+	}*/
 }

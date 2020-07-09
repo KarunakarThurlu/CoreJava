@@ -26,14 +26,13 @@ public class PrimeRange {
 		}
 		System.out.println();
 		System.out.println("============");
+		
 		//2nd way
 		IntStream.range(1,100)
-		.filter(number->IntStream.range(2,number)
-				.noneMatch(x->number%x==0))
-		.boxed()
-		.collect(Collectors.toList())
-		.forEach(x->System.out.print(x+" "));
-		;
+		         .filter(number->IntStream.range(2,number).noneMatch(x->number%x==0))
+		         .boxed()
+		         .collect(Collectors.toList())
+		         .forEach(x->System.out.print(x+" "));
 	}
 
 }
