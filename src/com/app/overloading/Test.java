@@ -1,7 +1,7 @@
 package com.app.overloading;
 
 public class Test {
-	public  static void show(Integer s)
+	public  static void show(StringBuilder s)
 	{
 		System.out.println("string method");
 	}
@@ -11,7 +11,7 @@ public class Test {
 	}
      public static void show(Object i) 
      {
-    	 System.out.println("int method"); 
+    	 System.out.println("Object method"); 
      }
 	public static void main(String[] args) {
 		show("abc");

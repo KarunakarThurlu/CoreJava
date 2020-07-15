@@ -16,6 +16,9 @@ public class ArrayOperationsUsingJava8 {
 		Arrays.stream(arr).findFirst().ifPresent((s->System.out.println(s)));
 		IntSummaryStatistics statics=Arrays.stream(arr).summaryStatistics();
 		System.out.println("==="+statics+"===");
+		
+		int sum=Arrays.stream(arr).reduce(0, (c,b)->c+b);
+		System.out.println(sum);
 
 
 		int a[]= {2,3,4,5,6,7};

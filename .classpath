@@ -10,7 +10,6 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/home/karunakar/.m2/repository/commons-codec/commons-codec/1.10/commons-codec-1.10.jar" sourcepath="/home/karunakar/.m2/repository/commons-codec/commons-codec/1.10/commons-codec-1.10-sources.jar">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
@@ -20,5 +19,6 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

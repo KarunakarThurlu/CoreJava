@@ -31,12 +31,7 @@ class Test {
 				.filter(e->e%2==0)
 				.map(e->e*2)
 				.reduce(0,(e,t)->(e+t)));
-		
-		
-		
-		
-		
-		
+
 		List<Integer> list=Arrays.asList(1,2,3,4,6,5,7,9,8,10);
 
 		System.out.println(list.stream()
@@ -62,9 +57,9 @@ class Test {
 		.map(e->e*2)
 		.forEach(e->System.out.println(e))
 		;
-		
-		
-		
+
+
+
 	}
 	public static boolean isGT5(int number) {
 		return number>3;
