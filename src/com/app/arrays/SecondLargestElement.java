@@ -1,9 +1,13 @@
 package com.app.arrays;
 
+import java.util.Arrays;
+
 public class SecondLargestElement {
 
 	public static void main(String[] args) {
-		System.out.println(findSecondLorgest(new int[] {99,2,4,8,10,1,18,19,98}));
+		int a[]= {99,2,4,8,10,1,18,19,98};
+		System.out.println(findSecondLorgest(a));
+		Arrays.stream(a).forEach(s->System.out.print(s+" "));
 	}
 	private static int findSecondLorgest(int[] input) {
 		int first =input[0];

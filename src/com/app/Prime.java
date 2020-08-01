@@ -5,9 +5,12 @@ import java.util.List;
 
 public class Prime {
 	public static void main(String[] args) {
-		List<Integer> l=Arrays.asList(12,45,null);
-		l.add(null);
-		sum(null);
+		int j=-1;
+		for(int i=0;i<3;i++) {
+			j++;
+			System.out.println(j);
+		}
+		System.out.println(j);
 	}
 	static void  sum(List<Integer> l) {
 		int sum=0;

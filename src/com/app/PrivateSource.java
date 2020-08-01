@@ -2,17 +2,14 @@ package com.app;
 
 import java.lang.reflect.Field;
 
-class A{
-	private int i;
-}
 public class PrivateSource {
+	
 	public static void main(String[] args) throws Exception{
-		Class clz=Class.forName("com.app.A");
+		Class clz=Class.forName("com.app.model.Employee");
 		Object obj=clz.newInstance();
-
-		Field field=clz.getDeclaredField("i");
+		Field field=clz.getDeclaredField("ename");
 		field.setAccessible(true);
-		field.set(obj,2345);
+		field.set(obj, "karun");
 		System.out.println(field.get(obj));
 	}
 }

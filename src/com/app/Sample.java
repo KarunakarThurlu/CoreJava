@@ -1,44 +1,52 @@
 package com.app;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-interface Sample {
-	public static void main(String[] args) {
-		List<String> al=new ArrayList<>();
-		al.add("karun");
-		al.add("Java");
-		al.add("Spring");
-		al.add("SpringBoot");
-		al.add("Java");
-		al.add(null);
-		al.add(null);
-		
-		System.out.println(al);
-		al.stream().forEach(s->{
-			
-		       System.out.print(s+" ");
-		});
-		System.out.println();
-		List<String> ll=new LinkedList<>();
-		ll.add("React");
-		ll.add("Java");
-		ll.add("Spring");
-		ll.add("SpringBoot");
-		ll.add("Java");
-		ll.add(null);
-		ll.add(null);
-		ll.add("JavaScript");
-		System.out.println();
-		ll.stream().parallel().forEach(s->System.out.println(s+"  "+Thread.currentThread().getName()));
-		System.out.println();
-		System.out.println(ll);
-		int[] a= {23,45,56,67,87,12,32,98};
-		int sum=Arrays.stream(a).sum();
-		System.out.println(sum);
+public class Sample 
+{
+	/*Write dyanamic programs without using predefined functions 
+	 1. Given two strings s1 and s2, find s1 is the substring of s2,
+	 if yes remove s1 from s2 and print remaining string, 
+	 else return -1 Example : i/p1: s1 =the , s2 = another 
+	 o/p: anor i/p2: s1 = re, s2= apple o/p:-1*/
+	public static void main(String[] args) 
+	{	
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+Input : {[]{()}}
+Output : Balanced
+Input : [{}{}(]
+Output : Unbalanced
+Input : [)(]
+Output : Unbalanced
+ * 
+ */
