@@ -21,7 +21,7 @@ public class TwoSum {
 	 }
 	
 	public static void main(String[] args) {
-		int a[]=twoSum(new int[] {1,1},2);
+		int a[]=twoSum(new int[] {1,1,5,9,7,5},10);
 		Arrays.stream(a).forEach(k->System.out.println(k));;
 		
 	}

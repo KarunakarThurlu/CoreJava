@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-10">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="/home/karunakar/.m2/repository/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar" sourcepath="/home/karunakar/.m2/repository/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1-sources.jar">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
@@ -19,6 +24,6 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-10"/>
+	<classpathentry kind="lib" path="/home/karunakar/Downloads/dvdrental/New Folder/postgresql-42.2.14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

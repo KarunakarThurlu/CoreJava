@@ -15,12 +15,6 @@ public class StringManupulations {
 		System.out.println(s1.equals(s3));
 		System.out.println(s1.equals(s2));
 		System.out.println(s4==s3);
-		if(IntStream.range(2,11).noneMatch(n->11%n==0)) {
-			System.out.println("prime");
-		}else {
-			System.out.println("notPrime");
-		}
-		
-		
+			
 	}
 }

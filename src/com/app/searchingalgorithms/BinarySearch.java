@@ -1,12 +1,14 @@
-package com.app.algorithms;
+package com.app.searchingalgorithms;
 
 public class BinarySearch {
+	static int  count=0;
 	static int binary(int key,int a[])
 	{
 		int start=0;
 		int end=a.length-1;
 		while(start<=end)
 		{
+			count=count+1;
 			int mid=(start+end)/2;
 			if(key==a[mid])
 			{
@@ -25,7 +27,9 @@ public class BinarySearch {
 		return -1;
 	}
 	public static void main(String[] args) {
-		int a[]= {23,34,45,56,67,89};
-		System.out.println(binary(56,a));
+		
+		int a[]= {23,34,45,56,67,89,90,99,100,120};
+		System.out.println(binary(120,a));
+		System.out.println(count);
 	}
 }

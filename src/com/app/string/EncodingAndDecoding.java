@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class EncodingAndDecoding {
 
 	public static void main(String[] args) {
-		System.out.println("enter any one : (Encoding or Decoding)");
+		System.out.println("Enter your choice : (Encoding or Decoding)");
 		Scanner sc=new Scanner(System.in);
 		String choise=sc.nextLine();
 		if(choise.equalsIgnoreCase("Encoding")) {

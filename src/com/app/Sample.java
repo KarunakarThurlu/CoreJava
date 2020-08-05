@@ -1,22 +1,45 @@
 package com.app;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class Sample 
 {
-	/*Write dyanamic programs without using predefined functions 
-	 1. Given two strings s1 and s2, find s1 is the substring of s2,
-	 if yes remove s1 from s2 and print remaining string, 
-	 else return -1 Example : i/p1: s1 =the , s2 = another 
-	 o/p: anor i/p2: s1 = re, s2= apple o/p:-1*/
-	public static void main(String[] args) 
-	{	
+	public static void main(String[] args) throws ClassNotFoundException 
+	{
+		Class.forName("org.postgresql.Driver");
+		try (Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/testdb", "postgres",
+				"postgres")) {
+			if (con != null)
+				System.out.println("DB connected");
+			else
+				System.out.println("DB not connected");
+			if(con !=null)
+				System.out.println(con.getSchema());
+		} catch (Exception e) {
+			System.err.println(e);
+			
+				
+		}
+		
+		
 	}
 }
 
-
+/*case(1):
+ *   input   str1="the"
+ *           str2="another
+ *           
+ *   output:  anor
+ *   
+ * 
+ * 
+ * case(2):
+ *   input  str1="ae"
+ *          str2="apple";
+ *          
+ *  output: -1 
+ */
 
 
 
