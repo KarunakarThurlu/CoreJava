@@ -23,7 +23,7 @@ public class DateExample {
 		LocalDate date=LocalDate.now();
 		LocalTime time=LocalTime.now();
 		LocalDateTime dateTime=LocalDateTime.now();
-		System.out.println(dateTime);
+		System.out.println("======JDK1.8======"+dateTime+"========");
 		System.out.println(dateTime.getDayOfMonth());
 		String dd=dateTime.getYear()+"-"+dateTime.getMonthValue()+"-"+dateTime.getDayOfMonth()+" "+dateTime.getHour()+":"+dateTime.getMinute()+":"+dateTime.getSecond();
 		System.out.println(dd);
@@ -52,7 +52,9 @@ public class DateExample {
 		ZoneId la=ZoneId.of("America/Los_Angeles");
 		ZonedDateTime zt=ZonedDateTime.now(la);
 		System.out.println(zt);
-		
+		LocalDateTime t=LocalDateTime.now();
+		System.out.println(t);
+		System.out.println(t.getDayOfMonth()  +" "+t.getDayOfYear());
 		
 	}
 }

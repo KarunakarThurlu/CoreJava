@@ -1,61 +1,40 @@
 package com.app.model;
 
-import java.util.HashSet;
-import java.util.NoSuchElementException;
-import java.util.Set;
-
-public class Employee {
-	private Integer eid;
-	private String ename;
-	private Double esal;
+public class Employee  implements Comparable<Employee>{
+	private int id;
+	private String name;
+	private Double sal;
 	
-	public Integer getEid() {
-		return eid;
-	}
-	public void setEid(Integer eid) {
-		this.eid = eid;
-	}
-	public String getEname() {
-		return ename;
-	}
-	public void setEname(String ename) {
-		this.ename = ename;
-	}
-	public Double getEsal() {
-		return esal;
-	}
-	public void setEsal(Double esal) {
-		this.esal = esal;
-	}
 	public Employee() {
 		super();
 	}
-	public Employee(Integer eid, String ename, Double esal) {
+	public Employee(int id, String name,  Double sal) {
 		super();
-		this.eid = eid;
-		this.ename = ename;
-		this.esal = esal;
+		this.id = id;
+		this.name = name;
+		this.sal = sal;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Double getSal() {
+		return sal;
+	}
+	public void setSal(Double sal) {
+		this.sal = sal;
 	}
 	@Override
-	public String toString() {
-		return "Employee [eid=" + eid + ", ename=" + ename + ", esal=" + esal + "]";
+	public int compareTo(Employee e) {
+		return this.getSal().compareTo(e.getSal());
 	}
-	/*public static void main(String[] args) {
-		Employee e1=new Employee(12,"abs",13.123);
-		Employee e2=new Employee(12,"zbs",123.123);
-		Employee e3=new Employee(12,"cbs",193.123);
-		Set<Employee> s=new HashSet<>();
-		s.add(e3);
-		s.add(e1);
-		s.add(e2);
-        s.add(e3);//duplicate Object
-		System.out.println(s.size()+" "+s);
-		
-		double max=s.stream()
-				.mapToDouble(Employee::getEsal)
-				.max()
-				.orElseThrow(NoSuchElementException::new);
-		System.out.println(max);
-		
-	}*/
+	
 }

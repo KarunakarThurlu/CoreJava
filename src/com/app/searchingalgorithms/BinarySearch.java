@@ -1,6 +1,11 @@
 package com.app.searchingalgorithms;
 
 public class BinarySearch {
+	/*
+	 * @Author Karunakar
+	 * 
+	 * Date: 2020-12-05
+	 */
 	static int  count=0;
 	static int binary(int key,int a[])
 	{
