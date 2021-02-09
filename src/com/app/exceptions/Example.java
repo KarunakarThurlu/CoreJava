@@ -13,17 +13,17 @@ public class Example {
 	 *
 	 */
 	public static void main(String[] args) {
-		System.out.println("foo1");
-		System.out.println("foo2");
-		System.out.println("foo3");
+		System.out.println("Java");
+		System.out.println("J2SE");
+		System.out.println("J2EE");
 			try {
 				foo(0);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
-		System.out.println("foo4");
-		System.out.println("foo5");
-		System.out.println("foo6");
+		System.out.println("J2ME");
+		System.out.println("JSF");
+		System.out.println("JavaFx");
 	}
 	private static int foo(int i) {
 		System.out.println(10/i);

@@ -1,13 +1,21 @@
 package com.app.collections;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 public class MapExample {
+	/*
+	 * ****Map is not Child Interface of Collection****
+	 * 
+	 * 1).To Store data in key,value pairs we can go for Map(I)
+	 * 2).Map(I) Implementation classes are
+	 *    (i).   HashMap<T,T> m;
+	 *    (ii).  LinkedHashMap<T,T> m;
+	 *    (iii). TreeMap<T,T> m;
+	 *    (iv).  IdentityHashMap<T,T> m;
+	 *    (v).   WeekHashMap<T,T> m;
+	 *    (vi).  NavigableHashMap<T,T> m;
+	 */
 	public static void main(String[] args) {
 		Map<String,String> m=new TreeMap<>();
 		m.put("Malavika","India");
