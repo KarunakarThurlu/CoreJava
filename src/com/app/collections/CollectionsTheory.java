@@ -44,8 +44,8 @@ public class CollectionsTheory {
 	 *
 	 *Collection(I)VsCollections(C):-
 	 *========================
-	 *Collection(I)  is An Interface ,To Represent group of individual objects as single entity then gor Collection.
-	 *Collections(C) is a Class which contains generic methods And These generic methods applicable for all implementation calsses of Collection.
+	 *Collection(I)  is An Interface ,To Represent group of individual objects as single entity then go for Collection.
+	 *Collections(C) is a Class which contains generic methods And These generic methods applicable for all implementation classes of Collection.
 	 *
 	 *
 	 */
