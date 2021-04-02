@@ -43,6 +43,5 @@ public class QuickSort  {
 			quickSort(arr,left, j);
 		if(i<right)
 			quickSort(arr,i, right);
-
 	}
 }

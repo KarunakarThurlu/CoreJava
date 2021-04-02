@@ -1,40 +1,22 @@
 package com.app.searchingalgorithms;
-
 public class BinarySearch {
-	/*
-	 * @Author Karunakar
-	 * 
-	 * Date: 2020-12-05
-	 */
-	static int  count=0;
-	static int binary(int key,int a[])
-	{
-		int start=0;
-		int end=a.length-1;
-		while(start<=end)
-		{
-			count=count+1;
-			int mid=(start+end)/2;
-			if(key==a[mid])
-			{
+	static int binary(int key, int a[]) {
+		int start = 0;
+		int end = a.length - 1;
+		while (start <= end) {
+			int mid = (start + end) / 2;
+			if (key == a[mid]) {
 				return mid;
+			} else if (key < a[mid]) {
+				end = mid - 1;
+			} else {
+				start = mid + 1;
 			}
-			else if(key<a[mid])
-			{
-				end=mid-1;
-			}
-			else
-			{
-				start=mid+1;
-			}
-			
 		}
 		return -1;
 	}
 	public static void main(String[] args) {
-		
-		int a[]= {23,34,45,56,67,89,90,99,100,120};
-		System.out.println(binary(120,a));
-		System.out.println(count);
+		int a[] = { 23, 34, 45, 56, 67, 89, 90, 99, 100, 120 };
+		System.out.println(binary(120, a));
 	}
 }

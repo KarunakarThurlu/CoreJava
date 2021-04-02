@@ -1,5 +1,14 @@
-/.classpath
+.classpath
+.project
 .settings
 target
 bin/com/app
 *.class
+.metals
+.vscode
+.idea
+*.iws
+*.iml
+*.ipr
+.sts4-cache
+.attach_*

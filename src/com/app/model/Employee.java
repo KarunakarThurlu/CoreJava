@@ -1,13 +1,20 @@
 package com.app.model;
 
-public class Employee  {
+public class Employee   {
 	private int id;
 	private String name;
 		
+	
 	public Employee() {
 		super();
 	}
 
+	public Employee(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	
 	public int getId() {
 		return id;
 	}
