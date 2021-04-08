@@ -1,2 +1,3 @@
 # CoreJava
-Here you find basic corejava interview programs 
+Here you find basic core java interview programs 
+

@@ -1,11 +1,13 @@
 package com.app.designpatterns;
 
-public class Singleton {
+import java.util.stream.IntStream;
+
+public class SingletonDesignPatternExample {
 	public static void main(String[] args) {
-		for(int i=0;i<=10;i++) {
+		IntStream.range(0, 10).forEach(k->{
 			SingleToneInstoneInstance s=SingleToneInstoneInstance.getInstance();
-			System.out.println(i+" "+s.getName()+" "+s.getFeild());
-		}
+			System.out.println(k+" "+s.getName()+" "+s.getFeild());
+		});
 	}	
 }
 
@@ -29,13 +31,13 @@ class SingleToneInstoneInstance{
 	}
 
 
-	private static SingleToneInstoneInstance instance;
+	private static SingleToneInstoneInstance instance=null;
 
 	private SingleToneInstoneInstance(String name, String feild) {
 		super();
 		this.name = name;
 		this.feild = feild;
-		System.out.println("Singletone calss called");
+		System.out.println("Singletone constructor called!.");
 	}
 
 
