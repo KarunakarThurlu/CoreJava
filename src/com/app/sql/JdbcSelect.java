@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SimpleJDBC {
+public class JdbcSelect {
 	public static void main(String[] args) throws ClassNotFoundException {
 		Class.forName("org.postgresql.Driver");
 		String url="jdbc:postgresql://localhost:5432/testdb";
@@ -18,7 +18,7 @@ public class SimpleJDBC {
 								 .createStatement()
 								 .executeQuery("Select * from countrys");
 			while(resultSet.next()) {
-				System.out.println(resultSet.getString("c_name") +" "+resultSet.getString("c_currency")+" "+resultSet.getString("c_capital"));
+				System.out.println("Country Name : "+resultSet.getString("c_name") +"\t  Courrency : "+resultSet.getString("c_currency")+"\t\t  Capital : "+resultSet.getString("c_capital"));
 			}
 		} 
 		catch (SQLException e) {

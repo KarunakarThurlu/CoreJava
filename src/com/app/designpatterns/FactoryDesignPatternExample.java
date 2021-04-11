@@ -35,10 +35,14 @@ class Oracle implements DBConnection{
 	}
 }
 
-class FactoryPattern{
+class FactoryPattern{ 
+	
 	public static DBConnection connection=null;
+	
 	public static DBConnection getConnection(String name) {
+		
 		switch (name) {
+		
 		case "Postgres":
 			connection=	new PosrgreSQL();
 			break;
@@ -50,7 +54,9 @@ class FactoryPattern{
 			break;
 		default:
 			break;
+			
 		}
+		
 		return connection;
 	}
 }
