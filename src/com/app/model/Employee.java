@@ -30,4 +30,45 @@ public class Employee   {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj==this)
+			return true;
+		if(obj instanceof Employee) {
+			Employee e=(Employee) obj;
+			if(name.equals(e.getName()) && id==e.getId()) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+		return false;
+	}
+
+	/*@Override
+	public boolean equals(Object obj) {
+		try {
+			Employee e=(Employee) obj;
+			if(name.equals(e.getName()) && id==e.getId()) {
+				return true;
+			}else {
+				return false;
+			}
+		} catch (ClassCastException e) {
+			return false;
+		} catch(NullPointerException e) {
+			return false;
+		}
+	}*/
+	
 }

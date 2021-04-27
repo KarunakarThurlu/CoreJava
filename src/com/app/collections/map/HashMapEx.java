@@ -5,13 +5,13 @@ import java.util.Map;
 
 public class HashMapEx {
 	/*
-	 * 1). Uderlying DataStructure is HashTable
+	 * 1). Underlying DataStructure is HashTable
 	 * 2). Default Initial capacity is 16
 	 * 3). Only one null key is allowed,multiple null values are allowed.
 	 * 4). Insertion Order is not Allowed.
 	 * 5). Insertion is based on Hashing of keys.
-	 * 6). It is not thread-safe(Mutiple threads can perform operations on same object).
-	 * 7). Best Sutable for searching area.
+	 * 6). It is not thread-safe(Multiple threads can perform operations on same object).
+	 * 7). Best Suitable for searching area.
 	 */
 	public static void main(String[] args) {
 		Map<String, Integer> m=new HashMap<String, Integer>();

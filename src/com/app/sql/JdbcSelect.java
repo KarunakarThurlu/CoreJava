@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class JdbcSelect {
 	public static void main(String[] args) throws ClassNotFoundException {
@@ -12,11 +13,11 @@ public class JdbcSelect {
 		String userName="postgres";
 		String password="postgres";
 		Connection connection=null;
-		try {
-			ResultSet resultSet = DriverManager
-								 .getConnection(url,userName,password)
-								 .createStatement()
-								 .executeQuery("Select * from countrys");
+		try {		  
+			Connection connetion = DriverManager.getConnection(url,userName,password);
+			System.out.println(connetion.getClass().getName());
+			Statement statement  = connetion.createStatement();
+			ResultSet resultSet  = statement.executeQuery("Select * from countrys");
 			while(resultSet.next()) {
 				System.out.println("Country Name : "+resultSet.getString("c_name") +"\t  Courrency : "+resultSet.getString("c_currency")+"\t\t  Capital : "+resultSet.getString("c_capital"));
 			}

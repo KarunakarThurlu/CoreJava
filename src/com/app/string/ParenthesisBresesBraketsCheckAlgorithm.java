@@ -34,10 +34,8 @@ public class ParenthesisBresesBraketsCheckAlgorithm {
 						stack.pop();
 					else 
 						return "unbalanced";
-
 				}
 			}
-
 		}
 		return res;
 	}

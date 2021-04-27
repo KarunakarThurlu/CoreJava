@@ -12,3 +12,4 @@ bin/com/app
 *.ipr
 .sts4-cache
 .attach_*
+.atom
