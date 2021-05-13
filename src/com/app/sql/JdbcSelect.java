@@ -14,10 +14,11 @@ public class JdbcSelect {
 		String password="postgres";
 		Connection connection=null;
 		try {		  
-			Connection connetion = DriverManager.getConnection(url,userName,password);
-			System.out.println(connetion.getClass().getName());
-			Statement statement  = connetion.createStatement();
-			ResultSet resultSet  = statement.executeQuery("Select * from countrys");
+			ResultSet resultSet = DriverManager
+					             .getConnection(url,userName,password)
+					             .createStatement()
+					             .executeQuery("Select * from countrys")
+					             ;
 			while(resultSet.next()) {
 				System.out.println("Country Name : "+resultSet.getString("c_name") +"\t  Courrency : "+resultSet.getString("c_currency")+"\t\t  Capital : "+resultSet.getString("c_capital"));
 			}

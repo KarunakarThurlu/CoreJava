@@ -7,5 +7,5 @@ public interface IInterface {
 	static void staticmethod() {
 		System.out.println("Static Method implementattion");
 	}
-	public void foo();;;;
+	public void foo();
 }

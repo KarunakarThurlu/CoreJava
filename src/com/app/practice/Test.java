@@ -1,36 +1,22 @@
 package com.app.practice;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-import com.app.model.Employee;
 
-class A{
-	public void fooA() {
-		System.out.println("A class foo");
-	}
-}
-class B extends A{
-	public void fooB() {
-		System.out.println("B class foo");
-	}
-}
-class C extends B{
-	public void fooC() {
-		System.out.println("C class foo");
-	}
-}
 
 public class Test  {
 
 	public static void main(String[] args) {
-		C a=new C();
-		
+		 var l=List.of(12,34,45,56,78,89,9,3,6,7,9);
+		 
+		 
+		 l.stream().map(s->s+2).forEach(k->System.out.print(k+" "));
+		 System.out.println();
+		 l.stream().filter(s->s>20).forEach(k->System.out.print(k+" "));
+		 System.out.println();
+		 int sum= l.stream().reduce(0,(x,y)->x+y);
+		 System.out.println(sum);
 	}
 
 	public Map<String,Integer> getOrderCountPerProduct(List<Order> orders){
