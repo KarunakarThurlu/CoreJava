@@ -1,22 +1,25 @@
 package com.app.java8Features;
 
+import com.app.model.Employee;
+
+@FunctionalInterface
 interface Foo{
-	public Sample foo();
+	public Employee foo(int empid,String empName);
 }
-class Sample{
-	Sample(){
-		System.out.println("Sample Class Constructor");
-	}
-}
+
 public class ConstructorReference {
+	
 	public static void main(String[] args) {
 		
 		//=====By using Lambda====
-		Foo f=()->new Sample();
-		f.foo();
+		Foo f=(id,name)->new Employee(id,name);
+		Employee e1= f.foo(12,"foo");
+		System.out.println(e1);
 		
-		//====By using constructor referene====
-		Foo f1=Sample::new;
-		f1.foo();
+		//====By using constructor reference====
+		Foo ff=Employee::new;
+		Employee e2 = ff.foo(2,"jo");
+		System.out.println(e2);
+	
 	} 
 }

@@ -24,17 +24,25 @@ public class CompletableFutureEx {
 	 */
 
 	public static void main(String... k) {
-		CompletableFuture<Void> completableFuture=CompletableFuture.runAsync(()->{
+		CompletableFuture<String> greetingFuture=CompletableFuture.supplyAsync(()->{
 			System.out.println("Enter into asynchronous task. "+Thread.currentThread().getName());
 			try {
+				//Do some logic here
 				TimeUnit.SECONDS.sleep(4);
-				System.out.println("Hello from asynchronous task."); 
+				return "Karun";
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+				return e.getMessage();
 			}
-		}).thenRun(()->System.out.println("asynchronous task is done!"));
+		}).thenApply(name->{
+			return "Hai.... "+name;
+		}).thenApply(greeting->{
+			return greeting+" How are you?";
+		});
+		
 		try {
-			completableFuture.get();
+			String foo = greetingFuture.get();
+			System.out.println(foo);
 		} catch (InterruptedException | ExecutionException e) {
 			e.printStackTrace();
 		}
@@ -98,6 +106,8 @@ public static void main(String... k) {
 	}
 }
 */
+
+
 /*
  * 1).All the methods in the CompletableFuture API has two variants - One which accepts an Executor as an argument and one which doesn’t -
  * 2).Variations of runAsync() and supplyAsync() methods
@@ -118,4 +128,36 @@ public static void main(String... k) {
      }, executor);
  *
  *
+ */
+
+//Example4:-
+/* We can use thenApply() method to process and transform the result of a CompletableFuture when it arrives. 
+ * It takes a Function<T,R> as an argument. 
+ * Function<T,R> is a simple functional interface representing a function that accepts an argument of type T and produces a result of type R -
+
+public static void main(String... k) {
+		CompletableFuture<String> greetingFuture=CompletableFuture.supplyAsync(()->{
+			System.out.println("Enter into asynchronous task. "+Thread.currentThread().getName());
+			try {
+				//Do some logic here
+				TimeUnit.SECONDS.sleep(4);
+				return "Karun";
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				return e.getMessage();
+			}
+		}).thenApply(name->{
+			return "Hai.... "+name;
+		}).thenApply(greeting->{
+			return greeting+" How are you?";
+		});
+		
+		try {
+			String foo = greetingFuture.get();
+			System.out.println(foo);
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}
+	}
+
  */
