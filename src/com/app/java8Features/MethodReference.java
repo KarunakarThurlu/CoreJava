@@ -1,5 +1,8 @@
 package com.app.java8Features;
 
+import java.util.Arrays;
+import java.util.List;
+
 
 /*1). A method reference is the shorthand syntax for a lambda expression that executes just ONE method.
  *2). Lambda expressions & Method references are working because of functional interfaces.
@@ -59,3 +62,34 @@ public class MethodReference {
 	}
 }
  */
+
+
+//Example3:-
+
+/*
+
+class Test {
+
+	public static void main(String[] args) {
+
+		List<Integer> list=Arrays.asList(1,2,3,4,6,5,7,9,8,10);
+
+		System.out.println(list.stream()
+				.filter(Test::isGT5)
+				.filter(Test::isEven)
+				.map(Test::doubleIt)
+				.findFirst());
+
+	}
+	public static boolean isGT5(int number) {
+		return number>3;
+	}
+	public static boolean isEven(int number) {
+		return number%2==0;
+	}
+	public static int doubleIt(int number) {
+		return number*2;
+	}
+}
+
+*/
