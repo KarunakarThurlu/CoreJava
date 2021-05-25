@@ -7,6 +7,8 @@ public class TestDate {
 		try {
 			LocalDate d=LocalDate.of(2021,02,28);
 			System.out.println(d.getDayOfWeek());
+			LocalDate dd=LocalDate.now();
+			System.out.println(dd);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

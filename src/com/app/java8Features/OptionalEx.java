@@ -54,7 +54,7 @@ public class OptionalEx {
 
 		//Example:-
 		var l=List.of(new Employee(1,"karun"),new Employee(2,"varun"),new Employee(3,"tarun"),new Employee(4,"meanon"));
-		Optional<Employee> optional= l.stream()
+		Optional<Employee> optional = l.stream()
 				.filter(e->e.getName().equals("karun"))
 				.findAny();
 

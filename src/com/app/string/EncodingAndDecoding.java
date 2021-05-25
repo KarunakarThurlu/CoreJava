@@ -23,5 +23,6 @@ public class EncodingAndDecoding {
 		}else {
 			System.out.println("Please enter Correct Choise!");
 		}
+		sc.close();
 	}	
 }

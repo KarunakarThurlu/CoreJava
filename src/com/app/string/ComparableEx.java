@@ -17,12 +17,10 @@ public class ComparableEx {
 				new Player(200,"linda")
 				);
 		System.out.println("==========Before Sort==========");
-		p.stream().forEach(o->System.out.println(o.getScore()+" "+o.getName()));
+		p.forEach(System.out::println);
          
 		Collections.sort(p);
 		System.out.println("==========After Sort===========");
-		
-		p.stream().forEach(o->System.out.println(o.getScore()+" "+o.getName()));
-	    System.out.println(p);
+		p.forEach(System.out::println);
 	}
 }

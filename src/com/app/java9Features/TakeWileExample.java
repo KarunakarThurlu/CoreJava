@@ -25,6 +25,8 @@ public class TakeWileExample {
 		    .forEach(System.out::println);
 		
 		
+		System.out.println("------------------------------------");
+		
 		var set=Set.of(2,3,5,7,9,11,13,15,17,19,21,23,29,31,37);
 		
 		//unpredictable result, B'z Set is unordered collection

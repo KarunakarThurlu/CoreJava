@@ -1,5 +1,6 @@
 package com.app.java9Features;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -13,17 +14,19 @@ import java.util.Set;
  * 5).Not allowed to add duplicate keys while initializing a Map with the new factory method -
  *    ex:-Map.of("A", 1, "A", 2); //java.lang.IllegalArgumentException thrown: duplicate key: A
  *    
- * 6).  
+ * 6).We can't add values explicitly(ex: l.add(<V>),Otherwise we will get  java.lang.UnsupportedOperationException
  *
  */
 public class CollectionFactoryMethods {
 	
 	public static void main(String... factoryMethodsDemo) {
 		
-		var list = List.of(10,20,30,40,50,60,70,80,90,100,110,120);
+		List<Integer> foos=Arrays.asList(12,34,45,67,78,89);
+		var list = List.of();
 		System.out.println(list);
 
 		var set  = Set.of("java","scala","spark","julia","go");
+		//set.add("s"); java.lang.UnsupportedOperationException
 		System.out.println(set);
 
 		

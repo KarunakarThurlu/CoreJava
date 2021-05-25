@@ -10,10 +10,7 @@ import java.util.stream.IntStream;
 
 public class ArrayListEx {
 	public static void main(String[] args) {
-		//finding 2nd max salary from given table and second minimum salary from a table
-		//mysql> select esal from emp order by esal desc limit 1,1;
-		//mysql> select esal from emp order by esal  limit 1,1;
-		
+	
 		List<String> l=Arrays.asList("saritha","namitha","haritha","mamatha","kavitha","susmitha");
 		
 		Collections.sort(l);

@@ -1,7 +1,7 @@
 package com.app.java8Features;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /*1). A method reference is the shorthand syntax for a lambda expression that executes just ONE method.
@@ -13,17 +13,24 @@ import java.util.List;
  *   static   method reference ----> className::methodName
  *   
  */
-@FunctionalInterface
-interface foo{
-	int doSum(int a,int b);
-}
 public class MethodReference {
 	public static void main(String[] args) {
-		foo m=MethodReference::doSum;
-		System.out.println(m.doSum(12, 124)); 
+		var list=List.of(2,3,45,64,23,67,89,98,34,44,39,58);
+		var result=list.stream()
+				.filter(MethodReference::isGraterThan20)
+				.filter(MethodReference::isEvenNumber)
+				.map(MethodReference::doubleIt)
+				.collect(Collectors.toList());
+		result.forEach(System.out::println);
 	}
-	public static  int doSum(int a,int b) {
-		return a+b;
+	static boolean isGraterThan20(int number) {
+		return number>20;	
+	}
+	static boolean isEvenNumber(int number) {
+		return number%2==0?true:false;
+	}
+	static int doubleIt(int num) {
+		return num*num;
 	}
 }
 
