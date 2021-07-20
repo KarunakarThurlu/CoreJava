@@ -8,24 +8,24 @@ import java.util.List;
 
 
 public class ComparableEx {
-	
+
 	/*
 	 * 1). It is Functional Interface
 	 * 2). It consists comapreTo(<T> t) abstract method.
 	 * 3). Present in java.lang package.
 	 * 4). It Can be used for Default Natural Sorting Order.
-	 * 
-	 * 
+	 *
+	 *
 	 */
-	
+
 	public static void main(String[] args) {
 		List<String> foos=Arrays.asList("Java","NodeJS","SpringBoot","React");
-		
+
 		//Default Natural Sorting Order
 		Collections.sort(foos);
 		System.out.println(foos);
 
-		
+
 		//Custom Sorting Order
 		Collections.sort(foos,(f1,f2)->f2.compareTo(f1));
 		System.out.println(foos);
@@ -36,17 +36,17 @@ public class ComparableEx {
 		emps.add(e1);
 		emps.add(e2);
 		emps.add(e3);
-		
+
 		emps.forEach(e->System.out.println(e));
 	}
-	
+
 }
 class Foo implements Comparable<Foo>{
 
 	private int id;
 	private String name;
 	private Double sal;
-	
+
 	public Foo() {
 		super();
 	}
@@ -80,8 +80,8 @@ class Foo implements Comparable<Foo>{
 	}
 	@Override
 	public String toString() {
-		return "Foo [id=" + id + ", name=" + name + ", sal=" + sal + "]";
+		return "Foo { id=" + id + ", name=" + name + ", sal=" + sal + " }";
 	}
-	
+
 
 }

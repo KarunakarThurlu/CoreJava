@@ -9,7 +9,7 @@ public class ArrayListEx {
 	 * 1). Underlying DataStructure is Dynamic Array.
 	 * 2). Default initial Capacity is 16.
 	 * 3). Duplicate elements are allowed.
-	 * 4). null values are allwed any no.of times.
+	 * 4). null values are allowed any no.of times.
 	 * 5). Insertion Order is allowed.
 	 * 6). It is not Thread Safe.
 	 * 7). If frequent Operation is fetching then go for ArrayList.

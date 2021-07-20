@@ -5,16 +5,17 @@ import java.util.Set;
 
 public class HashSetEx {
 	/*
-	 * 
+	 * 1). Duplicate elements are not allowed
+	 * 2). Insertion Order is not allowed.
 	 * 
 	 */
 	public static void main(String[] args) {
 
 		Set<String> foos=new HashSet<>();
 		
-		foos.add("Alexa");
-		foos.add("Google");
-		foos.add("Mi");
+		foos.add("Amazon Alexa");
+		foos.add("Google Assistantent");
+		foos.add("Apple siri");
 		foos.add("Amazon");
 		foos.add("GooglePixel");
 		foos.add("GooglePixel");
