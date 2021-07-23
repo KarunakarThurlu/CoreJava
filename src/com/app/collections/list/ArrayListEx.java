@@ -15,6 +15,7 @@ public class ArrayListEx {
 	 * 7). If frequent Operation is fetching then go for ArrayList.
 	 * 
 	 */
+	
 	public static void main(String[] args) {
 		List<String> foos=new ArrayList<>();
 		Collections.synchronizedList(foos);
@@ -26,6 +27,7 @@ public class ArrayListEx {
 		foos.add("Cassandra");
 		foos.add("Kudu");
 		foos.add("RedShift");
+		foos.get(2);
 		System.out.println(foos);
 		
 		foos.stream().forEach(k->System.out.println(k+" "+k.hashCode()));

@@ -29,14 +29,8 @@ public class StringClassTheory {
 	 *
 	 *
 	 */
-	public static void main(String[] args) {
-		String s=new String("foo");
-		s.concat("foo");
-		StringBuffer sb=new StringBuffer("foo");
-		sb.append("foo");
-		System.out.println(s);
-		System.out.println(sb);
-		
+	public static void main(String[] args) throws Exception {
+
 
 	}
 }

@@ -17,9 +17,12 @@ public class HashMapEx {
 		Map<String, Integer> m=new HashMap<String, Integer>();
 		System.out.println(m);
 		m.put("Car", 3);
-		m.put("alexa", 1);
+		m.put("alexa", 3);
+		m.put("alexa", 3);
 		m.put("google",2);
 		m.put("cat",7);
+		m.put(null,7);
+		m.put(null,7);
 		
 		
 		System.out.println(m.hashCode());
