@@ -22,11 +22,11 @@ public class AES_GCM_Demo {
 	private static final int GCM_IV_LENGTH = 12;
 	private static final int GCM_TAG_LENGTH = 16;
 	private static final int SALT_LENGTH_BYTE = 16;
+	private static  final int ITERATION_COUNT = 65536;
 	private byte[] IV = new byte[GCM_IV_LENGTH];
 	private static byte[] SALT = new byte[SALT_LENGTH_BYTE];
 	private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
-	private KeyGenerator keyGenerator;
 	private SecretKey secretKey;
 	private Cipher ecipher;
 	private Cipher dcipher;
@@ -49,8 +49,9 @@ public class AES_GCM_Demo {
 
 	public static SecretKey generateKey(char[] password) throws  Exception {
 		SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-		KeySpec spec = new PBEKeySpec(password, SALT, 65536, 256);
+		KeySpec spec = new PBEKeySpec(password, SALT, ITERATION_COUNT, AES_KEY_SIZE);
 		SecretKey secret = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), ALGORITHAM);
+        System.out.println(secret.toString());
 		return secret;
 	}
 	public String doEncrypt(String rawString) {
@@ -70,12 +71,12 @@ public class AES_GCM_Demo {
 	}
 
 	public static void main(String[] args) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException {
-		AES_GCM_Demo aes=new AES_GCM_Demo("D!gT@lBuY");
-		String plainText = "Karunakar_Thurlu";
+		AES_GCM_Demo aes=new AES_GCM_Demo("D!gT@lBuY$1");
+		String plainText = "4788";
 		System.out.println("Original Text : " + plainText);
 		String cipherText = aes.doEncrypt(plainText);
+		System.out.println(cipherText.length());
 		System.out.println("Encrypted Text : " + cipherText);
-
 		String decryptedText = aes.doDecrypt(cipherText);
 		System.out.println("DeCrypted Text : " + decryptedText);
 	}
