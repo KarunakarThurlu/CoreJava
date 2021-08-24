@@ -62,7 +62,7 @@ public class AES_GCM_Example {
     }
 
     public static void main(String[] args) throws Exception {
-        AES_GCM_Example e=new AES_GCM_Example("D!GiT@LBuY$123");
+        AES_GCM_Example e=new AES_GCM_Example("Foo");
         String pText = "4782A4b7C0";
         System.out.println("Plain Text : "+pText);
         String encryptedTextBase64 = e.encrypt(pText);
