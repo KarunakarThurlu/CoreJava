@@ -10,11 +10,27 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.KeySpec;
+import java.util.Arrays;
 import java.util.Base64;
 
 
 
 public class AES_GCM_Demo {
+
+	 /*
+      Using default IV, SALT values like
+
+      private static byte[] IV = new byte[12];
+      private static byte[] SALT_ES_DS = new byte[16];
+
+      then corresponding SALT,IV  default values be like
+
+      SALT :[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      IV   :[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+      Note:- this SALT and IV Remains same for all Passwords
+
+     */
 
 	private static final String ALGORITHAM ="AES";
 	private static final String AES_ALGORITHAM_MODE ="AES/GCM/NoPadding";
@@ -23,7 +39,7 @@ public class AES_GCM_Demo {
 	private static final int GCM_TAG_LENGTH = 16;
 	private static final int SALT_LENGTH_BYTE = 16;
 	private static  final int ITERATION_COUNT = 65536;
-	private byte[] IV = new byte[GCM_IV_LENGTH];
+	private static byte[] IV = new byte[GCM_IV_LENGTH];
 	private static byte[] SALT = new byte[SALT_LENGTH_BYTE];
 	private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
@@ -51,7 +67,6 @@ public class AES_GCM_Demo {
 		SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
 		KeySpec spec = new PBEKeySpec(password, SALT, ITERATION_COUNT, AES_KEY_SIZE);
 		SecretKey secret = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), ALGORITHAM);
-        System.out.println(secret.toString());
 		return secret;
 	}
 	public String doEncrypt(String rawString) {
@@ -71,13 +86,15 @@ public class AES_GCM_Demo {
 	}
 
 	public static void main(String[] args) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException {
-		AES_GCM_Demo aes=new AES_GCM_Demo("D!gT@lBuY$1");
-		String plainText = "4788";
+		AES_GCM_Demo aes=new AES_GCM_Demo("cH@nGEme!FuC@N");
+		String plainText = "47A881O9w6";
 		System.out.println("Original Text : " + plainText);
 		String cipherText = aes.doEncrypt(plainText);
 		System.out.println(cipherText.length());
 		System.out.println("Encrypted Text : " + cipherText);
 		String decryptedText = aes.doDecrypt(cipherText);
 		System.out.println("DeCrypted Text : " + decryptedText);
+		System.out.println("SALT :"+Arrays.toString(SALT));
+		System.out.println("IV   :"+Arrays.toString(IV));
 	}
 }

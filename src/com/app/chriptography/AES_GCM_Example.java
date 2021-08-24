@@ -5,31 +5,40 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.security.SecureRandom;
 import java.security.spec.KeySpec;
+import java.util.Arrays;
 import java.util.Base64;
 
 public class AES_GCM_Example {
+    /*
+      Using Static IV, SALT values like
 
+      private static byte[] IV = "Ch@NgE".getBytes();
+      private static byte[] SALT_ES_DS = "W2#$34RTy67J@r78LQ".getBytes();
+
+      then corresponding SALT,IV static values be like
+
+      SALT VALUE  : [87, 50, 35, 36, 51, 52, 82, 84, 121, 54, 55, 74, 64, 114, 55, 56, 76, 81]
+      IV VALUE    : [67, 104, 64, 78, 103, 69]
+
+      Note:- this SALT and IV Remains same for all Passwords
+
+     */
     private static final String ALGORITHAM ="AES";
     private static final String AES_ALGORITHAM_MODE ="AES/GCM/NoPadding";
     private static final int AES_KEY_SIZE = 256;
-    private static final int GCM_IV_LENGTH = 12;
     private static final int GCM_TAG_LENGTH = 16;
-    private static final int SALT_LENGTH_BYTE = 16;
     private static  final int ITERATION_COUNT = 65536;
-    private byte[] IV = new byte[GCM_IV_LENGTH];
+    private static byte[] IV = "Ch@NgE".getBytes();
+    private static byte[] SALT_ES_DS="W2#$34RTy67J@r78LQ".getBytes();
     private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
     private SecretKey secretKey;
-    private static byte[] SALT_ES_DS;
     private Cipher ecipher;
     private Cipher dcipher;
    public  AES_GCM_Example(String key) throws Exception{
-       this.SALT_ES_DS= decodeHexString("A009C1A485912C6AE630D3E744240B04");
        this.secretKey=generateKey(key.toCharArray());
        this.ecipher=Cipher.getInstance(AES_ALGORITHAM_MODE);
        this.dcipher=Cipher.getInstance(AES_ALGORITHAM_MODE);
@@ -40,83 +49,29 @@ public class AES_GCM_Example {
         SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
         KeySpec spec = new PBEKeySpec(password, SALT_ES_DS, ITERATION_COUNT, AES_KEY_SIZE);
         SecretKey secret = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), ALGORITHAM);
-        System.out.println(secret.toString());
         return secret;
     }
     public  String encrypt(String pText) throws Exception {
-        byte[] iv = getRandomNonce(GCM_IV_LENGTH);
         byte[] cipherText= ecipher.doFinal(pText.getBytes());
-        byte[] cipherTextWithIvSalt = ByteBuffer.allocate(iv.length + SALT_ES_DS.length + cipherText.length)
-                .put(iv)
-                .put(SALT_ES_DS)
-                .put(cipherText)
-                .array();
-        return Base64.getEncoder().encodeToString(cipherTextWithIvSalt);
+        return Base64.getEncoder().encodeToString(cipherText);
     }
     private  String decrypt(String cText) throws Exception {
         byte[] decode = Base64.getDecoder().decode(cText.getBytes(UTF_8));
-        ByteBuffer bb = ByteBuffer.wrap(decode);
-        byte[] iv = new byte[GCM_IV_LENGTH];
-        bb.get(iv);
-        bb.get(SALT_ES_DS);
-        byte[] cipherText = new byte[bb.remaining()];
-        bb.get(cipherText);
-        byte[] plainText = dcipher.doFinal(cipherText);
+        byte[] plainText = dcipher.doFinal(decode);
         return new String(plainText, UTF_8);
     }
 
-
-    public static byte hexToByte(String hexString) {
-        int firstDigit = toDigit(hexString.charAt(0));
-        int secondDigit = toDigit(hexString.charAt(1));
-        return (byte) ((firstDigit << 4) + secondDigit);
-    }
-
-    public static byte[] decodeHexString(String hexString) {
-        if (hexString.length() % 2 == 1) {
-            throw new IllegalArgumentException("Invalid hexadecimal String supplied.");
-        }
-        byte[] bytes = new byte[hexString.length() / 2];
-        for (int i = 0; i < hexString.length(); i += 2) {
-            bytes[i / 2] = hexToByte(hexString.substring(i, i + 2));
-        }
-        return bytes;
-    }
-
-    private static int toDigit(char hexChar) {
-        int digit = Character.digit(hexChar, 16);
-        if (digit == -1) {
-            throw new IllegalArgumentException("Invalid Hexadecimal Character: "+ hexChar);
-        }
-        return digit;
-    }
-
-    // Random byte[] with length numBytes
-    public static byte[] getRandomNonce(int numBytes) {
-        byte[] nonce = new byte[numBytes];
-        new SecureRandom().nextBytes(nonce);
-        return nonce;
-    }
-
-    // hex representation
-    public static String hex(byte[] bytes) {
-        StringBuilder result = new StringBuilder();
-        for (byte b : bytes) {
-            result.append(String.format("%02x", b));
-        }
-        return result.toString();
-    }
-
-
-
     public static void main(String[] args) throws Exception {
         AES_GCM_Example e=new AES_GCM_Example("D!GiT@LBuY$123");
-        String pText = "4782";
+        String pText = "4782A4b7C0";
+        System.out.println("Plain Text : "+pText);
         String encryptedTextBase64 = e.encrypt(pText);
-        System.out.println(encryptedTextBase64);
-        System.out.println(encryptedTextBase64.length());
+        System.out.println("EncryptedTextBase64 : "+encryptedTextBase64);
+        System.out.println("EncryptedTextBase64 length : " +encryptedTextBase64.length());
         String decreptedTextBase64 = e.decrypt(encryptedTextBase64);
-        System.out.println(decreptedTextBase64);
+        System.out.println("DecryptedTextBase64 : "+decreptedTextBase64);
+        System.out.println("SALT VALUE  : "+Arrays.toString(SALT_ES_DS));
+        System.out.println("IV VALUE    : "+Arrays.toString(IV));
 
     }
 }
