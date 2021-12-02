@@ -34,10 +34,10 @@ public class AES_GCM_Demo {
 
 	private static final String ALGORITHAM ="AES";
 	private static final String AES_ALGORITHAM_MODE ="AES/GCM/NoPadding";
-	private static final int AES_KEY_SIZE = 256;
-	private static final int GCM_IV_LENGTH = 12;
+	private static final int AES_KEY_SIZE = 128;
+	private static final int GCM_IV_LENGTH = 10;
 	private static final int GCM_TAG_LENGTH = 16;
-	private static final int SALT_LENGTH_BYTE = 16;
+	private static final int SALT_LENGTH_BYTE = 18;
 	private static  final int ITERATION_COUNT = 65536;
 	private static byte[] IV = new byte[GCM_IV_LENGTH];
 	private static byte[] SALT = new byte[SALT_LENGTH_BYTE];

@@ -2,6 +2,7 @@ package com.app.collections.map;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class HashMapEx {
 	/*
@@ -14,7 +15,7 @@ public class HashMapEx {
 	 * 7). Best Suitable for searching area.
 	 */
 	public static void main(String[] args) {
-		Map<String, Integer> m=new HashMap<String, Integer>();
+		Map<String, Integer> m=new HashMap<>();
 		System.out.println(m);
 		m.put("Car", 3);
 		m.put("alexa", 3);
@@ -24,6 +25,9 @@ public class HashMapEx {
 		m.put(null,7);
 		m.put(null,7);
 		
+		for(Entry<String,Integer> e : m.entrySet()) {
+			System.out.println(e.getKey() +" "+e.getValue());
+		}
 		
 		System.out.println(m.hashCode());
 		////System.out.println();

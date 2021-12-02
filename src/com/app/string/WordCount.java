@@ -24,6 +24,10 @@ public class WordCount {
 		}
 		hm.keySet().stream().filter((hmm) -> hmm.length() >= 2).forEach((sm) -> System.out.println(sm));
 		System.out.println(hm);
+		
+		String ss="    ftyt";
+		System.out.println(ss);
+		System.out.println(ss.trim());
 
 	}
 }

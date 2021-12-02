@@ -1,17 +1,19 @@
 package com.app.java8Features;
 
 import java.util.function.Function;
+import java.util.function.IntUnaryOperator;
 
 public class FunctionDemo{
 
 	public static void main(String[] args) {
+		IntUnaryOperator add      = x -> x + 22;
+		IntUnaryOperator subtract = x -> x - 3;
+		IntUnaryOperator divide   = x -> x / 7;
+
 	
-		Function<String, Integer> fun=(a)->{		
-			return a.length();
-		};
-		Integer length=fun.apply("foo");
-		System.out.println(length);
-		
+		IntUnaryOperator fun = add.andThen(subtract).andThen(divide);
+		Integer result = fun.applyAsInt(2);
+		System.out.println(result);
 	}
 }
 /*

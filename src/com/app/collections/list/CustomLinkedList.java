@@ -1,38 +1,38 @@
 package com.app.collections.list;
 
-class Node {
-    public int key;
-    public Node next;
-	public Node() {
+ class Node{
+	Integer data;
+	Node next;
+	public Node(Integer data) {
 		super();
-	}
+		this.data = data;
+		this.next = null;
+	}	
 }
+public class CustomLinkedList {
+	Node head=null;
 
-class SingleLinkedList{
-	private Node head;
 	
-	public void insertData(int data) {
-		Node nextNode=new Node();
-		nextNode.key=data;
-		nextNode.next=head;
-		head=nextNode;
+	public void insertData(Integer data) {
+		Node currentNode=new Node(data);
+		currentNode.next=head;
+		head=currentNode;
 	}
 	
-	public void printLinkedListData() {
+	public void printData() {
 		Node current=head;
 		while(current!=null) {
-			System.out.println(current.key+" ");
+			System.out.println(current.data);
 			current=current.next;
 		}
 	}
-}
-
-public class CustomLinkedList {
 	public static void main(String[] args) {
-		SingleLinkedList sl=new SingleLinkedList();
-		sl.insertData(10);
-		sl.insertData(12);
-		sl.insertData(13);
-		sl.printLinkedListData();
+		CustomLinkedList l=new CustomLinkedList();
+		l.insertData(10);
+		l.insertData(12);
+		l.insertData(13);
+		l.printData();
+		
 	}
 }
+

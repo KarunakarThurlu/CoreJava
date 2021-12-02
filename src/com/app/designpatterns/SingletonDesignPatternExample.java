@@ -1,17 +1,20 @@
 package com.app.designpatterns;
 
+import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
 public class SingletonDesignPatternExample {
+	private static final Logger log = Logger.getLogger(SingletonDesignPatternExample.class.getName());
 	public static void main(String[] args) {
 		IntStream.range(0, 10).forEach(k->{
 			SingleToneInstoneInstance s=SingleToneInstoneInstance.getInstance();
-			System.out.println(k+" "+s.getName()+" "+s.getFeild());
+			log.info(k+" "+s.getName()+" "+s.getFeild());
 		});
 	}	
 }
 
 class SingleToneInstoneInstance{
+	private static final Logger log = Logger.getLogger(SingleToneInstoneInstance.class.getName());
 	String name="";
 	String feild="";
 	
@@ -37,7 +40,7 @@ class SingleToneInstoneInstance{
 		super();
 		this.name = name;
 		this.feild = feild;
-		System.out.println("Singletone constructor called!.");
+		log.info("Singletone constructor called!.");
 	}
 
 

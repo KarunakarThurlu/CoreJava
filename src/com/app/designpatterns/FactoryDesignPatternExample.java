@@ -1,10 +1,14 @@
 package com.app.designpatterns;
 
+import java.util.logging.Logger;
+
 public class FactoryDesignPatternExample {
+	private static final Logger log = Logger.getLogger(FactoryDesignPatternExample.class.getName());
+	
 	public static void main(String[] args) {
 		DBConnection connection=FactoryPattern.getConnection("Oracle");
 		String connectionName=connection.getDataBaseConnection();
-	    System.out.println(connectionName);	
+	    log.info(connectionName);	
 	}
 }
 
@@ -37,7 +41,7 @@ class Oracle implements DBConnection{
 
 class FactoryPattern{ 
 	
-	public static DBConnection connection=null;
+	public static  DBConnection connection=null;
 	
 	public static DBConnection getConnection(String name) {
 		
