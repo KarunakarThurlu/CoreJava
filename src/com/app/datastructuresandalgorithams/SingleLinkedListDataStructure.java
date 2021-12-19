@@ -1,7 +1,8 @@
 package com.app.datastructuresandalgorithams;
 
-
 public class SingleLinkedListDataStructure {
+	
+	//private static Logger log = LoggerFactory.getLogger(SingleLinkedListDataStructure.class.getName());
 
 	static Node<Integer> head=null;
 
@@ -46,18 +47,45 @@ public class SingleLinkedListDataStructure {
 		}
 	}
 	
-	//Delete data at specific position
-	public static void deleteNode(Integer data) {
-		Node<Integer> temp=head;
-		Node<Integer> previous=null;
-		while(null!=temp.next) {
-			previous=temp;
-			temp=temp.next;
-			if(temp.data==data) {
-				previous=temp.next;
-				return;
-			}	
+	//Get Data from linkedlist
+	public static Integer get(Integer index) {
+		Integer count=1;
+		if(head==null) {
+			return null;
+		}else {
+			Node<Integer> temp=head;
+			if(count==index) {
+				return temp.data;
+			}else {
+				while(temp.next!=null) {
+					count=count+1;
+					temp=temp.next;
+					if(count==index)
+						return temp.data;
+				}
+			}
 		}
+		return null;
+	}
+	
+	//Delete Node
+	public static void deleteNode(Integer data) {
+		Node<Integer> currentNode=head;
+
+		if(currentNode!=null && currentNode.data==data) {
+				head=currentNode.next;
+		}else {
+			while(null!=currentNode && null!=currentNode.next) {
+				Node<Integer> previousNode=currentNode;
+				currentNode=currentNode.next;
+				if(currentNode.data.equals(data)) {
+					Node<Integer> nextNode=currentNode.next;
+					previousNode.next=nextNode;
+					break;
+				}
+			}
+		}
+
 	}
 	public static void main(String... customLinkedListExample) {
 
@@ -66,27 +94,12 @@ public class SingleLinkedListDataStructure {
 		addEndOfHead(596);
 		addEndOfHead(206);
 		
-		System.out.println(head);
-		deleteNode(293);
-		System.out.println(head);
+		
+		System.out.println(get(4));
 		
 	}
 
 }
 
 
-final class Node<T>{
-	T data;
-	Node<T> next;
 
-	public Node(T data) {
-		super();
-		this.data = data;
-		this.next = null;
-	}
-
-	@Override
-	public String toString() {
-		return "[ " + data + " | *-]--->" + next + "";
-	}
-}
