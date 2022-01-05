@@ -1,8 +1,8 @@
 package com.app.datastructuresandalgorithams;
 
 public class Node<T>{
-	T data;
-	Node<T> next;
+	 T data;
+	 Node<T> next;
 
 	public Node(T data) {
 		super();

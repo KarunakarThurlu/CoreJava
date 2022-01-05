@@ -1,9 +1,9 @@
 package com.app.datastructuresandalgorithams;
 
 public class TreeNode<T> {
-	T  data;
-	TreeNode<T> left;
-	TreeNode<T> right;
+	 T  data;
+	 TreeNode<T> left;
+	 TreeNode<T> right;
 	
 	public TreeNode(T data) {
 		super();
@@ -16,7 +16,4 @@ public class TreeNode<T> {
 	public String toString() {
 		return "[ "+ left+"<--"+data+"-->" + right + " ]";
 	}
-	
-	
-
 }

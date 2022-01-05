@@ -35,8 +35,8 @@ public class BinaryTreeDataStructure {
 		public static void preTraversal(TreeNode<Integer> rootNode) {
 			if(rootNode!=null) {	
 				System.out.print(rootNode.data+" ");
-				inOrderTraversal(rootNode.left);
-				inOrderTraversal(rootNode.right);
+				preTraversal(rootNode.left);
+				preTraversal(rootNode.right);
 			}
 		}
 	//InOrder traversal
@@ -48,6 +48,7 @@ public class BinaryTreeDataStructure {
 			inOrderTraversal(rootNode.right);
 		}
 	}
+	//PostOrder traversal
 	public static void postOrderTraversal(TreeNode<Integer> rootNode) {
 		if(rootNode!=null) {
 			postOrderTraversal(rootNode.left);
@@ -56,13 +57,46 @@ public class BinaryTreeDataStructure {
 		}
 	}
 	
+	//Deleting a node from  tree
+	public static void delete(Integer data) {
+		root=delete(root,data);
+	}
+	
+	private static TreeNode<Integer> delete(TreeNode<Integer> root, Integer data) {
+		if(root==null) {
+			return root;
+		}
+		if(data<root.data)
+			root.left=delete(root.left,data);
+		else if(data>root.data)
+			root.right=delete(root.right, data);
+		else {
+			if(root.left==null)
+				return root.right;
+			else if(root.right==null)
+				return root.left;
+			root.data=findMinFromRightSubTree(root.right);
+			root.right=delete(root.right,root.data);
+		}
+		return root;
+	}
+
+	private static Integer findMinFromRightSubTree(TreeNode<Integer> node) {
+		Integer minValue=node.data;
+		while(node.left!=null) {
+			minValue=node.data;
+			node=node.left;
+		}
+		return minValue;
+	}
+
 	public static void main(String[] args) {
+		insert(45);
 		insert(10);
-		insert(8);
+		insert(90);
 		insert(7);
-		insert(17);
-		insert(9);
-		insert(11);
+		insert(12);
+		insert(100);
 		System.out.println("PreOrder Trversal :");
 		preTraversal(root);
 		System.out.println();
@@ -71,6 +105,11 @@ public class BinaryTreeDataStructure {
 		System.out.println();
 		System.out.println("PostOrder Trversal :");
 		postOrderTraversal(root);
+		System.out.println();
+		System.out.println("Deleting 10 ");
+		delete(10);
+		System.out.println();
+		preTraversal(root);
 		
 	}
 }

@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class MergeSort {
 	/*
-	 * MergeSort: TimeComplexity Best Case Average Case Worest Case
-	 * 
-	 * O(nlogn) O(nlogn) O(nlogn)
+	 * MergeSort: TimeComplexity           BestCase              AverageCase            WorestCase
+	 *                                     
+	 *                                     O(nlogn)               O(nlogn)               O(nlogn)
 	 * 
 	 * 
 	 * 

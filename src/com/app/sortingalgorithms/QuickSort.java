@@ -24,7 +24,8 @@ public class QuickSort  {
 
 	}
 	private void quickSort(int arr[],int left, int right) {
-		int i=left;int j=right;
+		int i=left;
+		int j=right;
 		int pivot=arr[(right+left)/2];
 		while(i<=j) {
 			while(arr[i]<pivot)
