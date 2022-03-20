@@ -4,12 +4,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GraphWithLinkedList {
 	
-	private static final Logger log=Logger.getLogger(GraphWithLinkedList.class.getName());
 	
 	private LinkedList<Integer>[] list;
 	private Integer V;
@@ -18,7 +15,7 @@ public class GraphWithLinkedList {
 	@Override
 	public String toString() {
 		StringBuilder sb=new StringBuilder();
-		log.info(" Vertices : "+V+" Edges : "+E +"\n");
+		System.out.println(" Vertices : "+V+" Edges : "+E +"\n");
 		for (int i = 0; i <V; i++) {
 			sb.append(i+" : ");
 			for(Integer j : list[i]) {
@@ -37,7 +34,7 @@ public class GraphWithLinkedList {
 		q.offer(s);
 		while(!q.isEmpty()) {
 			int u=q.poll();
-			log.log(Level.INFO," Visited Node {} :",u);
+			System.out.print(u+" ");
 			for(Integer i:list[u]) {
 				if(!visited[i]) {
 					visited[i]=true;
@@ -54,7 +51,7 @@ public class GraphWithLinkedList {
 		stack.push(start);
 		while(!stack.isEmpty()) {
 			int visitedNode=stack.pop();
-			log.info(visitedNode +" ");
+			System.out.print(visitedNode +" ");
 			for(int i:list[visitedNode]) {
 				if(!visited[i]) {
 					stack.push(i);
@@ -72,7 +69,6 @@ public class GraphWithLinkedList {
 			list[i]=new LinkedList<>();
 		}
 	}
-	
 	public void addEdge(Integer from,Integer to) {
 		list[from].add(to);
 		list[to].add(from);
@@ -82,11 +78,12 @@ public class GraphWithLinkedList {
 		GraphWithLinkedList gll=new GraphWithLinkedList(5);
 		gll.addEdge(0,1);
 		gll.addEdge(1,2);
-		gll.addEdge(2,3);
-		gll.addEdge(3,0);
-		gll.addEdge(3,4);
+		gll.addEdge(3,2);
+		gll.addEdge(0,3);
+		gll.addEdge(2,4);
+		
 		gll.BFS(0);
-		log.info("");
+		System.out.println();
 		gll.DFS(0);
 	}
 	

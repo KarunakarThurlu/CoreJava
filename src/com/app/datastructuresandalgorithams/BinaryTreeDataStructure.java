@@ -1,7 +1,21 @@
 package com.app.datastructuresandalgorithams;
 
 public class BinaryTreeDataStructure {
-
+/*1). BinaryTree is a hierarchical data structure
+ *2). In Binary Tree each Node have utmost 2 child Nodes.(i.e either 0 OR 1 OR 2)
+ *3). Each Node contains Data Element and corresponding Left child,Right child nodes.
+ *4). 
+ * 
+ * 
+ *Full Binary Tree:-A full binary tree is a tree with every node has either 0 or 2 children. No node will have only one child.
+ *================
+ * 
+ *Complete Binary Tree:- A tree where every level fully filled (have 2 children) except maybe the last level. For the complete binary tree, we fill the last level from left to right.
+ *==================== 
+ * 
+ *Perfect Binary Tree:- All the leaves have the same depth or same level.
+ *===================== 
+ */
 	private static TreeNode<Integer> root=null;
 
 	public static void insert(Integer data) {

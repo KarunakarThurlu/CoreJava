@@ -1,12 +1,24 @@
 package com.app.numbers;
 
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TwoSum {
 
-	//Here Time Complexity is O(n^2)
-	public static int[] twoSum(int nums[],int target) {
-		Arrays.sort(nums);
+	private static Logger logger = System.getLogger(TwoSum.class.getName());
+	
+	
+	/**
+	 * 
+	 * @param nums
+	 * @param target
+	 * @return
+	 */
+	public static int[] twoSumSolutionOne(int[] nums,int target) {
+		
 		for(int i=0;i<nums.length;i++)
 			for(int j=i+1;j<nums.length;j++)
 				if(nums[j]+nums[i]==target)
@@ -14,31 +26,34 @@ public class TwoSum {
 		return  new int[] {};
 	}
 
-	//Here Time Complexity O(log(n))
-	public static int[] getTwoSum(int nums[],int target) {
-		Arrays.sort(nums);
-		int start=0;
-		int end=nums.length-1;
-		while(start<end) {
-			int sum=nums[start] + nums[end];
-			if(target==sum)
-				return new int[] {start,end};
-			else if(sum<target)
-				start++;
-			else 
-				end--;
+	/**
+	 * 
+	 * @param a
+	 * @param target
+	 * @return
+	 */
+	public static int[] twoSumSolutionTwo(int[] a,int target) {
+		Map<Integer, Integer> map = new HashMap<>();
+		Arrays.stream(a).forEach(e->map.put(e,e));
+		
+		for(int i=0;i<a.length;i++) {
+			int remaining = target-a[i];
+			if(map.containsKey(remaining)) {
+				return new int[] {a[i],remaining};
+			}
 		}
-		return new int[] {};
+		return new int[0];
 	}
-
-
+	
+	
 	public static void main(String[] args) {
-		int a[]=twoSum(new int[] {1,1,5,9,7,5},10);
-		Arrays.stream(a).forEach(s->System.out.print(s+" "));
-
-		System.out.println();
-
-		int b[]=getTwoSum(new int[] {1,1,5,9,7,5},10);
-		Arrays.stream(b).forEach(s->System.out.print(s+" "));
+		int[] inputArray= {1,11,5,9,7,5};
+		
+		int[]  a = twoSumSolutionOne(inputArray,10);
+		logger.log(Level.INFO,Arrays.toString(a));
+		
+		int[]  b =  twoSumSolutionTwo(inputArray,10);
+		logger.log(Level.INFO,Arrays.toString(b));
+		
 	}
 }

@@ -59,6 +59,8 @@ public class GraphWithAdjMatrix {
 		gds.addEdge(3,0);
 		gds.addEdge(2,4);
 		gds.BFS(4);
+		System.out.println();
+		System.out.println(gds);
 		
 	}
 	

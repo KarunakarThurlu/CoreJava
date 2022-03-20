@@ -1,8 +1,11 @@
 package com.app.datastructuresandalgorithams;
 
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
+
 public class SingleLinkedListDataStructure {
-	
-	//private static Logger log = LoggerFactory.getLogger(SingleLinkedListDataStructure.class.getName());
+
+	private static Logger logger = System.getLogger(SingleLinkedListDataStructure.class.getName());
 
 	static Node<Integer> head=null;
 
@@ -46,7 +49,7 @@ public class SingleLinkedListDataStructure {
 			temp.next=dataNode;
 		}
 	}
-	
+
 	//Get Data from linkedlist
 	public static Integer get(Integer index) {
 		Integer count=1;
@@ -67,13 +70,13 @@ public class SingleLinkedListDataStructure {
 		}
 		return null;
 	}
-	
+
 	//Delete Node
 	public static void deleteNode(Integer data) {
 		Node<Integer> currentNode=head;
 
 		if(currentNode!=null && currentNode.data==data) {
-				head=currentNode.next;
+			head=currentNode.next;
 		}else {
 			while(null!=currentNode && null!=currentNode.next) {
 				Node<Integer> previousNode=currentNode;
@@ -87,16 +90,32 @@ public class SingleLinkedListDataStructure {
 		}
 
 	}
+
+	//Reverse LinkedList
+	public static void reverseLinkedList() {
+		Node<Integer> current  = head;
+		Node<Integer> previous = null;
+		Node<Integer> next     = null;
+		while(current!=null) {
+			previous = current;
+			current  = current.next;
+
+			previous.next = next;
+			next=previous;
+			head=next;
+		}
+	}
 	public static void main(String... customLinkedListExample) {
 
 		addEndOfHead(190);
 		addEndOfHead(293);
 		addEndOfHead(596);
 		addEndOfHead(206);
-		
-		
-		System.out.println(get(4));
-		
+		logger.log(Level.INFO,head);
+		reverseLinkedList() ;
+		logger.log(Level.INFO,get(4));
+		logger.log(Level.INFO,head);
+
 	}
 
 }
