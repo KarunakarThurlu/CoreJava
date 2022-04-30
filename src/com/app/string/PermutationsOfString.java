@@ -2,7 +2,7 @@ package com.app.string;
 
 public class PermutationsOfString {
 	public static void main(String[] args) {
-		isPermute("ABCD");
+		isPermute("ABC");
 	}
 	static void isPermute(String s1)
 	{

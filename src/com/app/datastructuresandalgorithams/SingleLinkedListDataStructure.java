@@ -2,6 +2,9 @@ package com.app.datastructuresandalgorithams;
 
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
+import java.util.Objects;
+
+
 
 public class SingleLinkedListDataStructure {
 
@@ -30,23 +33,25 @@ public class SingleLinkedListDataStructure {
 		current.next=currentNode;
 	}
 	//Adding Data at specific position
-	public static void addAtNthposition(Integer data,Integer position) {
-		Node<Integer> dataNode=new Node<>(data);
-		if(head==null || position==1) {
-			dataNode.next=head;
-			head=dataNode;
+	public static void addAtNthposition(Integer data,Integer index) {
+		Node<Integer> dataNode = new Node<>(data);
+		if(index==0 || head == null) {
+			dataNode.next = head;
+			head = dataNode;
 		}else {
-			Node<Integer> temp=head;
-			Integer count=1;
-			while(count<position-1) {
-				temp=temp.next;
+			Integer count = 1;
+			Node<Integer> temp = head;
+			while(null!=temp.next) {
+				Node<Integer> previous =  temp;
+				temp = temp.next;
+				if(Objects.equals(index, count)) {
+					previous.next = dataNode;
+					dataNode.next = temp;
+				}
 				count++;
-				if(temp.next==null)
-					return;
 			}
-			Node<Integer> neaxtToTemp=temp.next;
-			dataNode.next=neaxtToTemp;
-			temp.next=dataNode;
+			if(index>count)
+				temp.next = dataNode;	
 		}
 	}
 
@@ -93,16 +98,17 @@ public class SingleLinkedListDataStructure {
 
 	//Reverse LinkedList
 	public static void reverseLinkedList() {
-		Node<Integer> current  = head;
-		Node<Integer> previous = null;
-		Node<Integer> next     = null;
-		while(current!=null) {
-			previous = current;
-			current  = current.next;
-
-			previous.next = next;
-			next=previous;
-			head=next;
+		if(head!=null) {
+			Node<Integer> current  = head;
+			Node<Integer> previous = null;
+			Node<Integer> temp     = null;
+			while(null!=current) {
+				previous = current;
+				current  = current.next;
+				previous.next = temp;
+				temp= previous;
+			}
+			head = temp;
 		}
 	}
 	public static void main(String... customLinkedListExample) {

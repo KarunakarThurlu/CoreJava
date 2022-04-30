@@ -20,9 +20,15 @@ public class FlyoidTriangle {
 		}*/
 	
 		/*
-		 * for(int i=1;i<=7;i++) { for(int k=7;k>=i;k--) { System.out.print(" "); }
-		 * 
-		 * for(int j=1;j<=i;j++) { System.out.print(j); } System.out.println(); }
+		 * for(int i=1;i<=7;i++) {
+		 *   for(int k=7;k>=i;k--) {
+		 *        System.out.print(" ");
+		 *   }
+		 *   for(int j=1;j<=i;j++) { 
+		 *         System.out.print(j); 
+		 *   } 
+		 *   System.out.println(); 
+		 *  }
 		 *
 		 *
  output:-
@@ -33,7 +39,7 @@ public class FlyoidTriangle {
 	   *****
 	*/
 		
-		for(int i=1;i<=7;i++)
+		/*for(int i=1;i<=7;i++)
 		{
 			for(int k=7;k>=i;k--)
 			{
@@ -47,7 +53,7 @@ public class FlyoidTriangle {
 			System.out.println();
 
 		}
-/*output:-
+output:-
 *******
  ******
   *****
@@ -56,5 +62,16 @@ public class FlyoidTriangle {
      **
       *
        */
+
+	   int[] array = new int[6];
+	   for (int i = 0; i < array.length; i++) {
+		   for (int j = array.length;j>=0; j--) {
+			   System.out.print(" ");
+		   }
+		   for (int j = 0; j <= i; j++) {
+			System.out.print("* ");
+		   }
+		   System.out.println();
+	   }
 	}
 }

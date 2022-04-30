@@ -1,9 +1,12 @@
 package com.app.sortingalgorithms;
 
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.util.Arrays;
 
 public class BubbleSort
-{
+{ 
+	 private static final Logger logger = System.getLogger(BubbleSort.class.getName());
 	
 	/*
 	 * BubbleSort: TimeComplexity                Best Case                  Average Case               Worest Case
@@ -13,30 +16,32 @@ public class BubbleSort
 	 */
 	public static void main(String[] args) 
 	{
-		int a[]= {100,10,50,90,20,40,30,-22,11,23,34};
-		System.out.println("Before sorting ");
-		Arrays.stream(a).forEach(s->System.out.print(s+" "));
-		System.out.println();
+		int[] a= {1,2,3,4,5,6,7,10,15,19};
+		logger.log(Level.INFO,"Before sorting ");
+		logger.log(Level.INFO,Arrays.toString(a));
 		
 		new BubbleSort().sort(a);
 
-		System.out.println("After sorting ");
-		Arrays.stream(a).forEach(s->System.out.print(s+" "));
+		logger.log(Level.INFO,Arrays.toString(a));
+		
 	}
 
 	private void sort(int[] a)
 	{
-		for(int i=0;i<a.length;i++)
-		{
-			for(int j=0;j<a.length;j++)
-			{
-				if(a[i]<a[j]) 
-				{
-				 int temp =a[i];
-				 a[i]=a[j];
-				 a[j]=temp;
+		int count =0 ;
+		for(int i=0;i<a.length;i++){
+			for(int j=0;j<a.length-1;j++){
+				if(a[j]>a[j+1]) {
+				  int temp =a[j];
+				  a[j]=a[j+1];
+				  a[j+1]=temp;
+				  count=count+1;
 				}
 			}
+			if(count==0){
+				break;
+			}
 		}
+		logger.log(Level.INFO, "Swap Count is :{0}",count);
 	}
 }

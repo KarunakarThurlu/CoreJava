@@ -1,6 +1,8 @@
 package com.app.sortingalgorithms;
 
+import java.lang.System.Logger.Level;
 import java.util.Arrays;
+import java.util.Random;
 
 public class MergeSort {
 	/*
@@ -11,50 +13,46 @@ public class MergeSort {
 	 * 
 	 * 
 	 */
+	
+	private static final System.Logger logger = System.getLogger(MergeSort.class.getName());
+	
 	public static void main(String[] args) {
-		int a[] = { 10, 50, -11, 12, 45, 67, 20, 60, 30 };
-		System.out.println("Before sorting ");
-		Arrays.stream(a).forEach(s -> System.out.print(s + " "));
-		System.out.println();
-
-		new MergeSort().divideSubArrays(a, a.length);
-
-		System.out.println("After sorting ");
-		Arrays.stream(a).forEach(s -> System.out.print(s + " "));
+		int[] array = new int[100];
+		for (int i = 0; i < array.length; i++) {
+			array[i] =  new Random().nextInt(1000);
+		}
+		logger.log(Level.INFO,"Before Sorting Array : {0}", Arrays.toString(array));
+		mergeSort(array);
+		logger.log(Level.INFO,"After Sorting Array : {0}", Arrays.toString(array));
+	}
+	public static void mergeSort(int[] inputArray){
+		if(inputArray.length <= 1){
+			return;
+		}
+		int mid = inputArray.length/2;
+		int[] leftArray = Arrays.copyOfRange(inputArray, 0, mid);
+		int[] rightArray = Arrays.copyOfRange(inputArray, mid, inputArray.length);
+		mergeSort(leftArray);
+		mergeSort(rightArray);
+		merge(leftArray, rightArray, inputArray);
 	}
 
-	private void divideSubArrays(int[] arr, int length) {
-		if (length < 2)
-			return;
-		int mid = length / 2;
-		int left_arr[] = new int[mid];
-		int right_arr[] = new int[length - mid];
-		int k = 0;
-		for (int l = 0; l < length; l++) {
-			if (l < mid) {
-				left_arr[l] = arr[l];
-			} else {
-				right_arr[k] = arr[l];
-				k++;
+	public static void merge(int[] leftArray, int[] rightArray, int[] inputArray){
+		int leftArrayIndex = 0;
+		int rightArrayIndex = 0;
+		int inputArrayIndex = 0;
+		while(leftArrayIndex < leftArray.length && rightArrayIndex < rightArray.length){
+			if(leftArray[leftArrayIndex] < rightArray[rightArrayIndex]){
+				inputArray[inputArrayIndex++] = leftArray[leftArrayIndex++];
+			}else{
+				inputArray[inputArrayIndex++] = rightArray[rightArrayIndex++];
 			}
 		}
-		divideSubArrays(left_arr, mid);
-		divideSubArrays(right_arr, length - mid);
-		merge(left_arr, right_arr, arr, mid, length - mid);
-	}
-
-	private void merge(int[] left_arr, int[] right_arr, int[] a, int left_size, int right_size) {
-		int l = 0, r = 0, i = 0;
-		while (l < left_size && r < right_size) {
-			if (left_arr[l] < right_arr[r])
-				a[i++] = left_arr[l++];
-			else
-				a[i++] = right_arr[r++];
+		while(leftArrayIndex < leftArray.length){
+			inputArray[inputArrayIndex++] = leftArray[leftArrayIndex++];
 		}
-		while (l < left_size)
-			a[i++] = left_arr[l++];
-		while (r < right_size)
-			a[i++] = right_arr[r++];
-
+		while(rightArrayIndex < rightArray.length){
+			inputArray[inputArrayIndex++] = rightArray[rightArrayIndex++];
+		}
 	}
 }

@@ -88,7 +88,7 @@ public class ArrayExample {
 		for(int i=0;i<a.length;i++) {
 			int rem = target-a[i];
 			if(map.containsKey(rem)) {
-				loggger.log(Level.INFO, "Indexs  : {0} {1}");
+				loggger.log(Level.INFO, "Elements  : {0} {1}",a[i],rem);
 			}
 		}
 	}
