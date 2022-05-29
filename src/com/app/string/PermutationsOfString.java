@@ -1,29 +1,30 @@
 package com.app.string;
 
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
+import java.util.ArrayList;
+import java.util.List;
+
 public class PermutationsOfString {
+
+	private static final Logger logger = System.getLogger(PermutationsOfString.class.getName());
+	static List<String> l = new ArrayList<>();
+
 	public static void main(String[] args) {
-		isPermute("ABC");
+		permutations("ABCD","");
+		logger.log(Level.INFO,l);
 	}
-	static void isPermute(String s1)
-	{
-		if(s1.isEmpty())
-		{
-			System.out.println("String not empty");
-		}
-		isPermute("",s1);
-	}
-	static void isPermute(String prefix,String remaining)
-	{
-		if(remaining.isEmpty())
-		{
-			System.out.println(prefix);
-		}
-		else
-		{
-			for(int i=0;i<remaining.length();i++)
-			{
-				isPermute(prefix+remaining.charAt(i),remaining.substring(0,i)+remaining.substring(i+1,remaining.length()));
+
+	public static List<String> permutations(String src,String permutation) {
+		if(src.isBlank()) 
+			l.add(permutation);
+		else 
+			for (int i=0;i<src.length();i++) {
+				char currentChar = src.charAt(i);
+				String newString = src.substring(0,i)+src.substring(i+1);
+				permutations(newString,permutation+currentChar);
 			}
-		}
+
+		return l;
 	}
 }

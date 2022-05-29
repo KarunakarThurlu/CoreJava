@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class TestDate {
 	public static void main(String[] args) {
 		Logger log = System.getLogger(TestDate.class.getName());
-		DateTimeFormatter df = DateTimeFormatter.ofPattern("YYYY-MM-dd HH:MM:ss");
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:MM:ss");
 		LocalDateTime date =LocalDateTime.now();
 		
 		log.log(Level.INFO,"Solution One :"+ df.format(date));

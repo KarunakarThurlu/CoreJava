@@ -20,6 +20,7 @@ public class HashSetEx {
 		foos.add("GooglePixel");
 		foos.add("GooglePixel");
 		foos.add("GooglePixel");
+		
 		foos.add(null);
 		foos.add(null);
 		foos.add(null);

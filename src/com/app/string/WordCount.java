@@ -31,3 +31,19 @@ public class WordCount {
 
 	}
 }
+
+/*
+
+Meeting title: Phone screen for karunakar thurlu, Software Development Engineer
+Personalized ID: 5951752966
+Meeting ID: 5951 75 2966
+Hosting Region: Ireland
+URL Link: https://chime.aws/5951752966
+US dial-in: +1 206-462-5569
+US toll-free dial-in: +1 855-552-4463
+International dial-in numbers: https://chime.aws/dialinnumbers/
+
+shisidhu@amazon.com
+venukon@amazon.com
+hire-scheduling@email.amazon.com
+*/
