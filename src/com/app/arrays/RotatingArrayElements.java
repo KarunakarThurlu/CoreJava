@@ -15,52 +15,20 @@ public class RotatingArrayElements {
 		Integer[] arrayOne = {1,2,3,4,5,6,7};
 		Integer[] arrayTwo = {1,2,3,4,5,6,7};
 
-		Integer[] resultOne = rotatingArraySolutionOne(arrayOne, 3);
-		Integer[] resultTwo = rotatingArraySolutionTwo(arrayTwo, 3);
-
-		loggger.log(Level.INFO,"Solution One :"+ Arrays.toString(resultOne));
-		loggger.log(Level.INFO,"Solution Two :"+ Arrays.toString(resultTwo));
-	}
-
-
-	/*======================Space Complexity==============Time Complexity=========
-	                             O(1)                          O(n)               */
-	public static Integer[] rotatingArraySolutionOne(Integer[] array,Integer rotationCount) {
-		Integer temp=array.length-rotationCount;
-		doSwaping(array,0,temp-1);
-		doSwaping(array,temp , array.length-1);
-		doSwaping(array, 0, array.length-1);
-		return array;
-	}
-
-	private static void doSwaping(Integer[] array, int left, int right) {
-		while(left<right) {
-			int temp = array[right];
-			array[right]=array[left];
-			array[left]=temp;
-			left++;
-			right--;
-		}
-	}
-
-
-	/*======================Space Complexity==============Time Complexity=========
-    							 O(n)                          O(n)               */
-	public static Integer[] rotatingArraySolutionTwo(Integer[] array,Integer rotationCount) {
 		
-		if(rotationCount>array.length)
-			rotationCount = rotationCount%array.length;
+		Integer[] result=rotate(arrayOne,1);
+		loggger.log(Level.INFO,"Solution One :"+ Arrays.toString(result));
 		
-		Integer[] result = new Integer[array.length];
-
-		for (int i = 0; i < rotationCount; i++) {
-			result[i]=array[array.length-rotationCount+i];
-		}
-
-		for (int i = rotationCount,k=0; i < array.length; i++,k++) {
-			result[i]=array[k];
-		}
-
-		return result;
 	}
+	public static Integer[] rotate(Integer[] a,int rotationCount) {
+		for(int i=0;i<rotationCount;i++) {
+			int x=a[a.length-1];
+			for(int k=a.length-1;k>0;k--) {
+				a[k]=a[k-1];
+			}
+			a[0]=x;
+		}
+		return a;
+	}
+
 }

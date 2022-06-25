@@ -15,6 +15,8 @@ public class RecursionExample {
 		logger.log(Level.INFO, "Element 50 is  present at index : {0} ",binarySearch(a,0,a.length-1,50));
 		logger.log(Level.INFO, "Factorial of 5 is {0} ",factorialOfNumer(5));
 		logger.log(Level.INFO, "Sum of first 5  numbers is {0} ",printSumOfFirstNnumbers(5));
+		logger.log(Level.INFO, "Reverse Karunakar  : {0} ",getReverseString("Karunakar"));
+		logger.log(Level.INFO, "KAYAK is palindrome : {0}",isPalindrome("KAYAK"));
 		printFirstNFibonaciNumbers(5);
 		permutationOfString("ABC","");
 	}
@@ -30,6 +32,31 @@ public class RecursionExample {
 		printFristNnumbers(n+1);
 	}
     
+	/**
+	 * Get reversed string
+	 * @param inputstring
+	 * @return
+	 */
+	public static String getReverseString(String inputstring) {
+		if(inputstring.equals(""))
+			return "";
+		return getReverseString(inputstring.substring(1))+inputstring.charAt(0);
+	}
+	
+	/**
+	 * Finding given string is Palindrome 
+	 * @param str
+	 * @return
+	 */
+	public static Boolean isPalindrome(String str) {
+		if(str.length()==1 || str.equals(""))
+			return true;
+		else
+			if(str.charAt(0)==str.charAt(str.length()-1)) 
+				return isPalindrome(str.substring(1,str.length()-1));
+		return false;
+	}
+	
 	/**
 	 * Print Sum of first n numbers sum
 	 * @param n

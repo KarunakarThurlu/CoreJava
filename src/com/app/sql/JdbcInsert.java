@@ -15,7 +15,7 @@ public class JdbcInsert {
 			String password="postgres";
 			Connection connection=DriverManager.getConnection(url,userName,password);	
 			Statement stmt=connection.createStatement();
-		    stmt.executeUpdate("INSERT INTO Countrys (c_name,c_population,c_capital,c_currency) VALUES('Brazil',202794000,'Brasília','Brazilian real ')");
+		    stmt.executeUpdate("INSERT INTO countries (c_name,c_population,c_capital,c_currency) VALUES('USA',32794000,'WD','USD')");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLTimeoutException e) {

@@ -2,8 +2,11 @@ package com.app.datastructuresandalgorithams;
 
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.Stack;
 
 
 
@@ -195,25 +198,36 @@ public class SingleLinkedListDataStructure {
 	public static Node<Integer> mergingOfTwoSortedLinkedLists(Node<Integer> list1,Node<Integer> list2) {
 		Node<Integer> temp= new Node<>(0);
 		Node<Integer> head=temp;
-		while(true) {
-			if(list1==null) {
-				temp.next=list2;
-				break;
-			}
-			if(list2==null) {
-				temp.next=list1;
-				break;
-			}
+		while(list1!=null && list2!=null) {
 			if(list1.data<=list2.data) {
 				temp.next=list1;
 				list1=list1.next;
+				temp=temp.next;
 			}else {
 				temp.next=list2;
 				list2=list2.next;
+				temp=temp.next;
 			}
-			temp=temp.next;
 		}
+		temp.next=list1!=null?list1:list2;
 		return head.next;
+	}
+	
+	/**
+	 * Get N'th Node from end of linked list
+	 * @param head
+	 * @param n
+	 * @return
+	 */
+	static int  i=0;
+	public static Integer getNthNodeFromEnd(Node<Integer> head,int n) {
+		if(head==null)
+			return 0;
+		getNthNodeFromEnd(head.next,n);
+		i++;
+		if(i==n) 
+			return head.data;
+		return 0;
 	}
 	
 	/**
@@ -222,53 +236,155 @@ public class SingleLinkedListDataStructure {
 	 * @param head2
 	 */
 	public static Integer mergePointOfTwoLinkedLists(Node<Integer> head1,Node<Integer> head2) {
-		Node<Integer> temp1=head1;
-		Node<Integer> temp2=head2;
-		int firstNodeCount  = 0;
-		int secondNodeCount = 0;
-		while(temp1!=null) {
-			temp1=temp1.next;
-			firstNodeCount++;
-		}
-		while(temp2!=null) {
-			temp2=temp2.next;
-			secondNodeCount++;
-		}
-		temp1=head1;
-		temp2=head2;
-		
-		int diff=0;
-		if(firstNodeCount>secondNodeCount) {
-			diff = firstNodeCount-secondNodeCount;
-		}else {
-			diff = secondNodeCount-firstNodeCount;
-		}
-		
-		if(firstNodeCount>secondNodeCount) {
-			while(diff>0) {
-				temp1=temp1.next;
-				diff--;
-			}
-		}else {
-			while(diff>0) {
-				temp2=temp2.next;
-				diff--;
-			}
-		}
-		
-		while(temp1!=null && temp2!=null) {
-			if(temp1==temp2)
-				return temp1.data;
-			else {
-				temp1=temp1.next;
-			    temp2=temp2.next;
-			}
-		}
-		return 0;	
+		Node<Integer> t1=head2;
+		Node<Integer> t2=head1;
+        while(t1!=t2){
+            if(t2==null){
+                t2=head2;
+            }else{
+                t2=t2.next;
+            }
+            if(t1==null){
+                t1=head1;
+            }else{
+                t1=t1.next;
+            }
+        }
+        return t2.data;
 	}
+	/**
+	 * Deleting N'th Node from end of Linked List
+	 * @param head
+	 * @param n
+	 * @return
+	 */
+	public static Node<Integer> deleteNthNodeFromEnd(Node<Integer> head,Integer n) {
+		int count = 0;
+		Node<Integer>  l=head;
+        while(l!=null){
+            l=l.next;
+            count++;
+        }
+        if(n==count) {
+        	return head.next;
+        }
+        Node<Integer>  temp=head;
 
+        int index=count-n;
+        for(int i=1;i<index;i++) {
+        	temp=temp.next;
+        }
+        temp.next=temp.next.next;
+        return head;
+	}
+	
+	/**
+	 * Remove Loop in Linked List if Exists
+	 * @param head
+	 * @return
+	 */
+	public static Boolean removeLoopInLinkedList(Node<Integer> head) {
+		Set<Node<Integer>> set= new HashSet<>();
+		Node<Integer> temp=null;
+		while(head!=null) {
+			if(set.contains(head)) {
+				temp.next=null;
+				return true;
+			}else {
+				set.add(head);
+				temp=head;
+				head=head.next;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Find given  Linked List is Polindrome or not
+	 * @param head
+	 * @return true is if YES || false id NO
+	 */
+	public static Boolean isPolindromeList(Node<Integer> head) {
+		if(head==null || head.next==null) {
+			return true;
+		}
+		Stack<Integer> s=new Stack<>();
+		Node<Integer> t=head;
+		while(t!=null) {
+			s.push(t.data);
+			t=t.next;
+		}
+		while(head!=null) {
+			Integer i = s.pop();
+			if(i!=head.data)
+				return false;
+			head=head.next;
+		}
+		return true;
+	}
+	
+	public static  Node<Integer> rotateLinkedList(Node<Integer> head,int k){
+		if(head==null || head.next==null )
+			return head;
+		int size=1;
+		Node<Integer> l=head;
+		while(l.next!=null) {
+			l=l.next;
+			size++;
+		}
+		k=k%size;
+		if(k%size==0) {
+			return head;
+		}
+		for(int i=0;i<k;i++) {
+			head=rotate(head);
+		}
+		return head;
+	}
+	public static Node<Integer> rotate(Node<Integer> head){
+		Node<Integer> temp=head;
+		Node<Integer> t=null;
+		while(temp.next!=null) {
+			t=temp;
+			temp=temp.next;
+		}
+		if(t!=null) {
+			t.next=null;
+			temp.next=head;
+		}
+		return temp;
+	}
+	
+	public static Node<Integer> reverseBetween(Node<Integer> head,int left,int right){
+		Node<Integer> prevN=head;
+		Node<Integer> currN=null;
+		Node<Integer> nextN=null;
+		
+		for(int i=1;i<left-2;i++) {
+			prevN=prevN.next;
+		}
+		currN=prevN.next;
+		prevN.next=null;
+		Node<Integer> currN2=currN;
+		for(int i=1;i<=(right-left);i++) {
+			currN2=currN2.next;
+		}
+		nextN=currN2.next;
+		
+		currN2.next=null;
+		Node<Integer> rev=reverseLinkedList(currN);
+        
+		prevN.next=rev;
+		Node<Integer> prevN2=prevN;
+		while(prevN.next!=null) {
+        	prevN=prevN.next;
+		}
+		prevN.next=nextN;
+		return prevN2;
+	}
+	
 	public static void main(String... customLinkedListExample) {
-
+		/*
 		addEndOfHead(10);
 		addEndOfHead(20);
 		addEndOfHead(30);
@@ -277,15 +393,24 @@ public class SingleLinkedListDataStructure {
 		logger.log(Level.INFO,head);
 		Node<Integer> h= reverseLinkedList(head) ;
 		logger.log(Level.INFO,h);
-		Node<Integer> h1= addAll(List.of(10,30,50,80,120));
+		Node<Integer> h1= addAll(List.of(10,22,30,32,45,50));
 		Node<Integer> h2= addAll(List.of(20,40,60,90,100));
 		Node<Integer> h3= mergingOfTwoSortedLinkedLists(h1,h2);
-		logger.log(Level.INFO,h3);
+		logger.log(Level.INFO,"Merging of sorted lists : {0}",h3);
 
 		Node<Integer> listWithDuplicates= addAll(List.of(10,20,20,30,50,60,70,80,80,100,120,120,120,130));
 		logger.log(Level.INFO,listWithDuplicates);
 		Node<Integer> listWithOutDuplicates=removeDuplicateNodes(listWithDuplicates);
 		logger.log(Level.INFO,listWithOutDuplicates);
+		Node<Integer> delNthFromEnd= addAll(List.of(100,200,300));
+		logger.log(Level.INFO,delNthFromEnd);
+		logger.log(Level.INFO,deleteNthNodeFromEnd(delNthFromEnd, 2));*/
+		Node<Integer> palindromelist= addAll(List.of(10,20,50,50,20,10));
+		logger.log(Level.INFO, isPolindromeList(palindromelist));
+		
+		Node<Integer> revbtn= addAll(List.of(100,200,300,400,500,600,700,800));
+		logger.log(Level.INFO, revbtn);
+		logger.log(Level.INFO, reverseBetween(revbtn, 2, 3));
 	}
 
 }

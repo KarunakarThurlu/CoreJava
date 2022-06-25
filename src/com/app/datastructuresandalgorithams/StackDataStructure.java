@@ -56,5 +56,45 @@ public class StackDataStructure {
 		System.out.println("popedelement : "+ pop());
 		System.out.println("stack size : "+ size()+" , stack capacity : "+capacity());
 		printStack();
+		
+		System.out.println("-------------------------------------------------");
+		StackUsingLinkedList sl=new StackUsingLinkedList();
+		sl.push(10);
+		sl.push(20);
+		System.out.println(sl.head);
+		System.out.println(sl.pop());
+		System.out.println(sl.head);
+	}
+}
+class StackUsingLinkedList{
+	Node<Integer> head=null;
+	Integer size;
+	
+	public void push(Integer data) {
+		Node<Integer> dataNode=new Node<>(data);
+		if(head==null) {
+			head=dataNode;
+		}else {
+			Node<Integer> t=head;
+			while(t.next!=null)
+				t=t.next;
+			t.next=dataNode;
+			size++;
+		}
+	}
+	
+	public Integer pop() {
+		if(head==null) {
+			return null;
+		}else {
+			Node<Integer> t=head;
+			while(null!=t.next) {
+				t=t.next;
+			}
+			Integer data=t.data;
+			t=t.next;
+			head=t;
+			return data;
+		}
 	}
 }

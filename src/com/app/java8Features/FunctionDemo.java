@@ -1,10 +1,13 @@
 package com.app.java8Features;
 
-import java.util.function.Function;
 import java.util.function.IntUnaryOperator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FunctionDemo{
 
+	private static final Logger log=Logger.getLogger(FunctionDemo.class.getName());
+	
 	public static void main(String[] args) {
 		IntUnaryOperator add      = x -> x + 22;
 		IntUnaryOperator subtract = x -> x - 3;
@@ -13,7 +16,8 @@ public class FunctionDemo{
 	
 		IntUnaryOperator fun = add.andThen(subtract).andThen(divide);
 		Integer result = fun.applyAsInt(2);
-		System.out.println(result);
+		log.log(Level.INFO," Result is : {0}" ,result);
+		
 	}
 }
 /*
