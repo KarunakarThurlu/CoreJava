@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ArrayExample {
 
@@ -50,25 +51,105 @@ public class ArrayExample {
 		//medianOfTwoSortedArrays(new int[] {1,2},new int[] {3,4});
 		//bestToBuyStock(new int[]{7,1,5,3,6,4});
 		containerWithWater(new int[] {1,8,6,2,5,4,8,3,7});
+		//moveZerosToEnd(new int[] {0,0,3,0,4,0,5});
+		//permutationsOfArray(new int[] {1,2,3});
+		//findFirstMissingPositiveInteger(new int[] {3,4,-1,1});
+		//wordBreak("leetcode",Set.of("leet","code"));
 	}
 	
+	public static void wordBreak(String src,Set<String> dict) {
+		int n=src.length();
+		boolean[] track=new boolean[n];
+		
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<=i;j++) {
+				String w=src.substring(j,i+1);
+				if(dict.contains(w)) {
+					if(j==0 || track[j-1])
+						track[i]=true;
+				}
+			}
+		}
+		loggger.log(Level.INFO, "Segmented String  :{0} ",track[n-1]);
+	}
+	
+	/**
+	 * 
+	 * @param nums
+	 * @return
+	 */
+	public static void findFirstMissingPositiveInteger(int[] nums) {
+		Arrays.sort(nums);
+		int missingnumber=1;
+		for(int i=0;i<nums.length;i++) {
+			if(nums[i]==missingnumber)
+				missingnumber++;
+		}
+		loggger.log(Level.INFO, "Missing number  :{0} ",missingnumber);
+	}
+	/**
+	 * Finding permutations of given array integers
+	 * @param nums
+	 */
+	public static void permutationsOfArray(int[] nums){
+		List<List<Integer>> result=new ArrayList<>();
+		boolean[] visited=new boolean[nums.length];
+		List<Integer> list=new ArrayList<>();
+		purmuationRecur(nums,result,list,visited);
+		loggger.log(Level.INFO, "Permutations  :{0} ",result);
+	}
+	
+	private static  void  purmuationRecur(int[] nums, List<List<Integer>> result, List<Integer> list, boolean[] visited) {
+		if(nums.length==list.size()) {
+			result.add(new ArrayList<>(list));
+			return;
+		}
+		for(int i=0;i<nums.length;i++) {
+			if(visited[i]==true)
+				continue;
+			visited[i]=true;
+			list.add(nums[i]);
+			purmuationRecur(nums,result,list,visited);
+			visited[i]=false;
+			list.remove(list.size()-1);
+			
+		}
+	}
 	public static void containerWithWater(int[] a) {
-		int i=0;
-		int j=a.length-1;
+		int start=0;
+		int end=a.length-1;
 		int maxArea=0;
-		while(i<j) {
-			int area=0;
-			if(a[i]>a[j]) {
-				area=(j-i)*a[j--];
-			}else {
-				area=(j-i)*a[i++];
-			}
-			if(maxArea<area) {
-				maxArea=area;
-			}
+		while(start<end) {
+			maxArea=Math.max(maxArea, Math.min(a[start], a[end])*(end-start));
+			if(a[start]<a[end])
+				start++;
+			else
+				end--;
 		}
 		loggger.log(Level.INFO, "Max Area  :{0} ",maxArea);
 	}
+	/**
+	 * Move All zero's to end of given array
+	 * @param nums
+	 */
+	public static void moveZerosToEnd(int[] nums) {
+		
+		int zero_index=0;
+		for(int i=0;i<nums.length;i++) {
+			if(nums[i]!=0) {
+				int temp=nums[zero_index];
+				nums[zero_index]=nums[i];
+				nums[i]=temp;
+				zero_index++;
+			}
+		}
+		
+		loggger.log(Level.INFO, "Moving zeros to end  :{0} ",Arrays.toString(nums));
+	}
+	/**
+	 * 
+	 * @param array
+	 */
 	public static void bestToBuyStock(int[] array) {
 		int min=array[0];
 		int max=0;

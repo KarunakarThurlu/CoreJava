@@ -1,95 +1,82 @@
 package com.app.datastructuresandalgorithams;
 
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LRUAlgoritham {
 
 
-	public static  Node<Integer> head = null;
-	public static Node<Integer> tail = null;
-	public final Integer CAPACITY = 5;
-	public Integer size=0;
-
-	public static void main(String[] args) {
-		LRUAlgoritham lru=new LRUAlgoritham();
-		lru.addElement(6);
-		lru.addElement(7);
-		lru.addElement(8);
-		lru.addElement(9);
-		lru.addElement(10);
-		System.out.println(head);
-		lru.addElement(11);
-		System.out.println(head);
-	}
-	public Integer getElement(Integer data) {
-		Node<Integer> tempHead=head;
-		while(tempHead!=null) {
-			Node<Integer> temp=tempHead;
-			tempHead=tempHead.next;
-			if(temp.data==data) {
-				if(temp.prev==null) {
-					return temp.data;
-				}else {
-					if(temp.prev!=null) {
-						
-					}
-				}
-			}
-		}
-		return null;
-	}
-	public void addElement(Integer data) {
-		Node<Integer> dataNode = new Node<>(data);
-		if(head==null) {
-			head=tail=dataNode;
-			size++;
-		}else {
-			if(Boolean.FALSE.equals(checkElementAlreadyExist(data))){
-				if(Objects.equals(size, CAPACITY)) {
-					Node<Integer> tempTail=tail.prev;
-					tempTail.next=dataNode;
-					dataNode.prev=tempTail;
-				}else {
-					Node<Integer> tempHead= head;
-					while(tempHead.next!=null) {
-						tempHead=tempHead.next;
-					}
-					dataNode.prev=tempHead;
-					tempHead.next=dataNode;
-					tail=dataNode;
-					size++;
-				}
-			}
-		}
-	}
+	public Node head = null;
+	public Node tail = null;
+	public Integer CAPACITY ;
+	public Integer SIZE;
+	Map<Integer, Node> cache;
 	
-	public Boolean checkElementAlreadyExist(Integer data) {
-		Node<Integer> tempHead= head;
-		while(tempHead!=null) {
-			if(Objects.equals(tempHead.data, data))
-				return true;
-			tempHead=tempHead.next;
+	LRUAlgoritham(int capacity){
+		this.CAPACITY=capacity;
+		this.SIZE=0;
+		cache=new HashMap<>(capacity);
+		this.head=new Node(0,0);
+		this.tail=new Node(0,0);
+		head.next=tail;
+		tail.prev=head;
+	}
+	public static void main(String[] args) {
+		
+	}
+    public int get(int key) {
+    	if(!cache.containsKey(key)) {
+    		return -1;
+    	}
+    	Node d=cache.get(key);
+    	updateList(d);
+    	return d.val;
+    }
+	public void put(int key,int val){
+		if(cache.containsKey(key)) {
+			Node temp=cache.get(val);
+			temp.val=val;
+			updateList(temp);
+		}else {
+			SIZE++;
+			if(SIZE>CAPACITY) {
+				cache.remove(tail.prev.key);
+				remove(tail.prev);
+				SIZE--;
+			}
+			Node dataNode=new Node(key,val);
+			insert(dataNode);
+			cache.put(key, dataNode);
 		}
-		return false;
+	}
+	//7439090141
+	private void updateList(Node temp) {
+		remove(temp);
+		insert(temp);
 	}
 
-	static class Node<T>{
-		T data;
-		Node<T> prev;
-		Node<T> next;
+	private void insert(Node temp) {
+		temp.next=head.next;
+		temp.next.prev=temp;
+		head.next=temp;
+		temp.prev=head;
+	}
+	private void remove(Node temp) {
+		temp.prev.next=temp.next;
+		temp.next.prev=temp.prev;	
+	}
 
-		public Node(T data) {
+	static class Node{
+		int key;
+		int val;
+		Node prev;
+		Node next;
+
+		public Node(int key, int val) {
 			super();
-			this.data = data;
-			this.prev = null;
-			this.next = null;
+			this.key = key;
+			this.val = val;
 		}
 
-		@Override
-		public String toString() {
-			return  "[ "+data + " |*<--]-->*" + next + "";
-		}
-
-			
 	}
 }
