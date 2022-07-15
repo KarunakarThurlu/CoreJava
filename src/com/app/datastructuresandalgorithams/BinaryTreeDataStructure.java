@@ -255,14 +255,44 @@ public class BinaryTreeDataStructure {
 		if(root!=null) {
 			TreeNode<Integer> left=root.left;
 			TreeNode<Integer> right=root.right;
-			left.right=right;
-			right.left=left;
-			invertBinaryTree(left);
-			invertBinaryTree(right);
+			root.right=left;
+			root.left=right;
+			invertBinaryTree(root.left);
+			invertBinaryTree(root.right);
 		}
 		return root;
 	}
 
+	static TreeNode<Integer> fbstLList=new TreeNode<>(0);
+	public static TreeNode<Integer> flattenBSTreeToLList(TreeNode<Integer> root){
+		 convertFlattenBSTreeToLList(root);
+		 return fbstLList;
+	}
+	
+	private static void convertFlattenBSTreeToLList(TreeNode<Integer> root) {
+		if(root==null)
+			return ;
+		
+		TreeNode<Integer> left=root.left;
+		TreeNode<Integer> right=root.right;
+		fbstLList.left=null;
+		fbstLList.right=root;
+		fbstLList=fbstLList.right;
+		convertFlattenBSTreeToLList(left);
+		convertFlattenBSTreeToLList(right);
+		
+	}
+	
+	public static TreeNode<Integer> mergeTwoBSTrees(TreeNode<Integer> root1,TreeNode<Integer> root2){
+		if(root1==null)
+			return root2;
+		if(root2==null)
+			return root1;
+		root1.data=root1.data+root2.data;
+		root1.left=mergeTwoBSTrees(root1.left,root2.left);
+		root1.left=mergeTwoBSTrees(root1.right,root2.right);
+		return root1;
+	}
 	public static void main(String[] args) {
 		
 		insert(List.of(10,2,12,8,11,1,3));
@@ -282,3 +312,6 @@ public class BinaryTreeDataStructure {
 		*/
 	}
 }
+
+
+

@@ -50,13 +50,32 @@ public class ArrayExample {
 		//minChangeToSortArray(new int[]{4,2,1});
 		//medianOfTwoSortedArrays(new int[] {1,2},new int[] {3,4});
 		//bestToBuyStock(new int[]{7,1,5,3,6,4});
-		containerWithWater(new int[] {1,8,6,2,5,4,8,3,7});
+		//containerWithWater(new int[] {1,8,6,2,5,4,8,3,7});
 		//moveZerosToEnd(new int[] {0,0,3,0,4,0,5});
 		//permutationsOfArray(new int[] {1,2,3});
 		//findFirstMissingPositiveInteger(new int[] {3,4,-1,1});
 		//wordBreak("leetcode",Set.of("leet","code"));
 	}
-	
+    public static int numberOfIslands(char[][] grid) {
+    	int islands=0;
+    	for(int i=0;i<grid.length;i++) {
+    		for(int j=0;j<grid[0].length;j++) {
+    			islands++;
+    			explore(grid,i,j);
+    		}
+    	}
+    	return islands;
+    }
+    
+	private static void explore(char[][] grid, int i, int j) {
+		if(i<0 || j<0 || i>=grid.length || j>=grid[0].length || grid[i][j]=='0')
+			return;
+		grid[i][j]='0';
+		explore(grid,i+1,j);
+		explore(grid,i-1,j);
+		explore(grid,i,j+1);
+		explore(grid,i,j-1);
+	}
 	public static void wordBreak(String src,Set<String> dict) {
 		int n=src.length();
 		boolean[] track=new boolean[n];

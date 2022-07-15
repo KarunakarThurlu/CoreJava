@@ -2,44 +2,32 @@ package com.app.numbers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class ThreeSum{
 	List<List<Integer>> findThreeSum(int[] nums){
 		checkingConstraints(nums);
-		List<List<Integer>> result=new ArrayList<>();
-		if(nums.length<3)
-			return result;
-		Arrays.sort(nums);
-		Integer target=0;
+		Set<List<Integer>> list=new HashSet<>();
+		
 		for(int i=0;i<nums.length;i++) {
-			if(nums[i]>target)
-				break;
-			if(i>0 && nums[i]==nums[i-1])
-				continue;
-			Integer j=i+1;
-			Integer k=nums.length-1;
+			int j=i+1;
+			int k=nums.length-1;
 			while(j<k) {
-				Integer sum=nums[i]+nums[j]+nums[k];
-				if(sum==target) {
-					List<Integer> l=new ArrayList<>();
-					l.add(nums[i]);l.add(nums[j]);l.add(nums[k]);
-					result.add(l);
-					while(nums[j]==nums[j+1])
-						j++;
-					while(nums[k]==nums[k-1])
-						k--;
+				int sum=nums[i]+nums[j]+nums[k];
+				if(sum==0)
+					list.add(Arrays.asList(nums[i],nums[j++],nums[k--]));
+				if(sum<0)
 					j++;
+				if(sum>0)
 					k--;
-				}else if(sum<target) {
-					j++;
-				}else {
-					k--;
-				}
 			}
 		}
-		return result;
+		
+		System.out.println(list);
+		return new ArrayList<>(list);
 	}
 	public void checkingConstraints(int nums[]) {
 		if(!(0<=nums.length && nums.length<=3000)) {
