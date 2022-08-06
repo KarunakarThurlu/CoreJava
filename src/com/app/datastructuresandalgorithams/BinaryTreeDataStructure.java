@@ -60,13 +60,13 @@ public class BinaryTreeDataStructure {
 		}
 	}
 	//InOrder traversal
-	public static void inOrderTraversal(TreeNode<Integer> rootNode) {
-
+	public static List<Integer> inOrderTraversal(TreeNode<Integer> rootNode,List<Integer> list) {
 		if(rootNode!=null) {
-			inOrderTraversal(rootNode.left);
-			System.out.print(rootNode.data+" ");
-			inOrderTraversal(rootNode.right);
+			inOrderTraversal(rootNode.left,list);
+			list.add(rootNode.data);
+			inOrderTraversal(rootNode.right,list);
 		}
+		return list;
 	}
 	//PostOrder traversal
 	public static void postOrderTraversal(TreeNode<Integer> rootNode) {
@@ -117,8 +117,12 @@ public class BinaryTreeDataStructure {
 				return root.right;
 			else if(root.right==null)
 				return root.left;
-			root.data=findMinFromRightSubTree(root.right);
-			root.right=delete(root.right,root.data);
+			else if(root.left!=null && root.right!=null) {
+				root.data=findMinFromRightSubTree(root.right);
+				root.right=delete(root.right,root.data);
+			}else {
+				return null;
+			}
 		}
 		return root;
 	}
@@ -290,8 +294,71 @@ public class BinaryTreeDataStructure {
 			return root1;
 		root1.data=root1.data+root2.data;
 		root1.left=mergeTwoBSTrees(root1.left,root2.left);
-		root1.left=mergeTwoBSTrees(root1.right,root2.right);
+		root1.right=mergeTwoBSTrees(root1.right,root2.right);
 		return root1;
+	}
+	public static Boolean pathSum(TreeNode<Integer> root,Integer targetSum) {
+		if(root==null) {
+			return false;
+		}
+		if(root.left==null && root.right==null) {
+			return root.data==targetSum;
+		}
+		return pathSum(root.left,targetSum-root.data) || pathSum(root.right,targetSum-root.data) ;
+	}
+	
+	public Boolean sameBST(TreeNode<Integer> root1,TreeNode<Integer> root2) {
+		if(root1==null && root2==null) {
+			return true;
+		}
+		if(root1==null && root2!=null) {
+			return false;
+		}
+		if(root1!=null && root2==null) {
+			return false;
+		}
+		return root1.data==root2.data && sameBST(root1.left,root2.left)  && sameBST(root1.right,root2.right);
+	}
+	
+	public TreeNode<Integer> balanceBST(TreeNode<Integer> root){
+		List<Integer> list=inOrderTraversal(root,new ArrayList<>());
+		return balanceBST(list,0,list.size()-1);
+	}
+	
+	private TreeNode<Integer> balanceBST(List<Integer> list, int left, int right) {
+		if(left>right)
+			return null;
+		Integer mid=left+(right-left)/2;
+		TreeNode<Integer> t=new TreeNode<>(mid);
+		t.left=balanceBST(list,left,mid-1);
+		t.right=balanceBST(list,mid+1,right);
+		return t;
+	}
+	
+	public Integer minDepthOfBST(TreeNode<Integer> root) {
+		if(root ==null) {
+			return 0;
+		}
+		if(root.left==null) {
+			return minDepthOfBST(root.right)+1;
+		}
+		if(root.right==null){
+			return minDepthOfBST(root.left)+1;
+		}
+		return Math.min(minDepthOfBST(root.left), minDepthOfBST(root.right))+1;
+	}
+	
+	public TreeNode<Integer> lcaOfBST(TreeNode<Integer> root,TreeNode<Integer> p,TreeNode<Integer> q){
+		if(root==null)
+			return null;
+		if(root==p || root ==q)
+			return root;
+		TreeNode<Integer> lca1=lcaOfBST(root.left,p,q);
+		TreeNode<Integer> lca2=lcaOfBST(root.right,p,q);
+		if(lca1!=null && lca2!=null) {
+			return root;
+		}
+		return lca1!=null?lca1:lca2;
 	}
 	public static void main(String[] args) {
 		
@@ -310,6 +377,16 @@ public class BinaryTreeDataStructure {
 		System.out.println();
 		preTraversal(root);
 		*/
+		int[] a= {1,43,5,6,7,8,990};
+		
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i]+" ");
+		} 
+		System.out.println(a);
+		
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i]+" ");
+		}
 	}
 }
 

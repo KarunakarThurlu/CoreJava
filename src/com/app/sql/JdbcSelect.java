@@ -8,8 +8,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class JdbcSelect {
-	public static void main(String[] args) throws ClassNotFoundException {
-		Class.forName("org.postgresql.Driver");
+	public static void main(String[] args)  {
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
 		String url="jdbc:postgresql://localhost:5432/testdb";
 		String userName="postgres";
 		String password="postgres";
@@ -34,5 +38,6 @@ public class JdbcSelect {
 				e.printStackTrace();
 			}
 		}
+		
 	}
 }

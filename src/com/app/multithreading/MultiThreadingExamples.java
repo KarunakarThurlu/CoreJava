@@ -55,7 +55,7 @@ public class MultiThreadingExamples {
 		 * 
 		 * * * Important areas where exactly use multithreading Multimedia graphics,Animations,games and web servers ,application server.
 		 * 
-		 * case(i)  : Thread Schedular:-It is part of JVM,and it is responsible for schedule threads. If Multiple threads are waiting for execution those threads execution order will be decided by thread schedular.
+		 * case(i)  : Thread Scheduler:-It is part of JVM,and it is responsible for schedule threads. If Multiple threads are waiting for execution those threads execution order will be decided by thread scheduler.
 		 *                             The order of execution of threads we con't predict it will decided by thread schedular it varying from JVM to JVM.
 		 * 
 		 * case(ii) : what is diff between t.start() and t.run()

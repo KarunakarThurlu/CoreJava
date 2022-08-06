@@ -15,8 +15,29 @@ public class StringProblems {
 		loggger.log(Level.INFO,longestSubStringWithOutRepetingCharacters("pwwkew"));
 		loggger.log(Level.INFO,longestPalindromeSubString("babad"));//generateParanhtasis
 		loggger.log(Level.INFO,generateParanhtasis(3));
+		reverseStringBylevel("Karunakarthurlu",3);
 	}
 	
+	public static void reverseStringBylevel(String str,Integer n) {
+		loggger.log(Level.INFO,"Before Reverse : {0}",str);
+		char[] ch=str.toCharArray();
+		for(int i=0;i<ch.length;i=i+n) {
+			int l=i;
+			int r=Math.min(i+n-1, ch.length-1);
+			reverse(ch,l,r);
+		}
+		loggger.log(Level.INFO,"After Reverse : {0}",new String(ch));
+	}
+	
+	private static void reverse(char[] ch, int l, int r) {
+		while(l<r) {
+			char c=ch[l];
+			ch[l++]=ch[r];
+			ch[r--]=c;
+		}
+		
+	}
+
 	/**
 	 * Finding Longest substring without duplicate characters
 	 * @param src

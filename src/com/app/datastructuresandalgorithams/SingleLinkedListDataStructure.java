@@ -2,8 +2,10 @@ package com.app.datastructuresandalgorithams;
 
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.Stack;
@@ -383,8 +385,32 @@ public class SingleLinkedListDataStructure {
 		return prevN2;
 	}
 	
+    public Node<Integer> addTwoNumbers(Node<Integer> root1,Node<Integer> root2){
+    	Node<Integer>  dummy=new Node<>(0);
+    	Node<Integer>  temp=dummy;
+    	Node<Integer> p=root1;
+    	Node<Integer> q=root2;
+    	
+    	int carry=0;
+    	while(p!=null && q!=null) {
+    		int x=(p!=null)?p.data:0;
+    		int y=(q!=null)?q.data:0;
+    		int sum=carry+x+y;
+    		carry=sum/10;
+    		temp.next=new Node<>(sum%10);
+    		if(root1.next!=null)
+    			root1=root1.next;
+    		if(root2.next!=null) {
+    			root2=root2.next;
+    		}
+    		temp=temp.next;
+    	}
+    	if(carry>0) {
+    		temp.next=new Node<>(carry);
+    	}
+    	return dummy.next;
+    }
 
-	
 	public static void main(String... customLinkedListExample) {
 		/*
 		addEndOfHead(10);
